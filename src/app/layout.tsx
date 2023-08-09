@@ -4,14 +4,22 @@ import { Poppins, Raleway } from 'next/font/google';
 
 const poppins = Poppins({
     subsets: ['latin'],
+    style: 'normal',
     weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
     variable: '--font-poppins',
+    display: 'swap',
+    adjustFontFallback: false,
+    preload: false,
 });
 
 const raleway = Raleway({
     subsets: ['latin'],
+    style: 'normal',
     weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
     variable: '--font-raleway',
+    display: 'swap',
+    adjustFontFallback: false,
+    preload: false,
 });
 
 export const metadata: Metadata = {
@@ -30,10 +38,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
-            <body className={[poppins.variable, raleway.variable].join(' ')}>
-                {children}
-            </body>
+        <html
+            className={[poppins.variable, raleway.variable].join(' ')}
+            lang="en"
+        >
+            <body>{children}</body>
         </html>
     );
 }

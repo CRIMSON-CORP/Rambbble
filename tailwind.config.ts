@@ -8,9 +8,27 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            colors: {
+                'primary-orange': '#FA7C56',
+                'dark-blue': '#00254A',
+                'base-80': '#626262',
+            },
             fontFamily: {
                 header: ['var(--font-raleway)'],
                 body: ['var(--font-poppins)'],
+            },
+            backgroundImage: {
+                primary: 'linear-gradient(90deg, #FC8B4E 0%, #F86463 100%)',
+            },
+            container: {
+                center: true,
+                padding: {
+                    DEFAULT: '20px',
+                    sm: '2rem',
+                    lg: '3rem',
+                    xl: '4rem',
+                    '2xl': '5rem',
+                },
             },
         },
     },
