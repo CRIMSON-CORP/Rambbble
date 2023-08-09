@@ -1,3 +1,4 @@
+import Header from '@/components/Header';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Poppins, Raleway } from 'next/font/google';
@@ -42,7 +43,10 @@ export default function RootLayout({
             className={[poppins.variable, raleway.variable].join(' ')}
             lang="en"
         >
-            <body>{children}</body>
+            <body>
+                <Header />
+                {children}
+            </body>
         </html>
     );
 }

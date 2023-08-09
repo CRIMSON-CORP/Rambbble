@@ -4,6 +4,8 @@ import { Button } from '../ui';
 import NavLinks from './NavLinks';
 
 function Header() {
+    console.log('render header');
+
     return (
         <header className="py-5 absolute w-full top-0 left-0 right-0">
             <div className="container">
