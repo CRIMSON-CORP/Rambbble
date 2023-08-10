@@ -39,11 +39,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html
-            className={[poppins.variable, raleway.variable].join(' ')}
-            lang="en"
-        >
-            <body>
+        <html lang="en">
+            <body className={[poppins.variable, raleway.variable].join(' ')}>
                 <Header />
                 {children}
             </body>

@@ -22,7 +22,7 @@ const Button: FC<ButtonProps> = ({
     type = 'button',
     children,
     href,
-    onClick = () => {},
+    onClick,
     variant = 'contained',
     size = 'normal',
 }) => {

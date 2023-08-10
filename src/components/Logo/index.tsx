@@ -6,6 +6,7 @@ function Logo() {
         <Image
             src="/logo.svg"
             alt="Rambbble logo"
+            id="logo"
             width={231.1}
             height={33.39}
             priority={true}
