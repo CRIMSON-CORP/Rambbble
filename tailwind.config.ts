@@ -11,6 +11,7 @@ const config: Config = {
             colors: {
                 'primary-orange': '#FA7C56',
                 'dark-blue': '#00254A',
+                'faint-dark-blue': '#273150',
                 'base-80': '#626262',
             },
             fontFamily: {
