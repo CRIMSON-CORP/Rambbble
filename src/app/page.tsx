@@ -1,6 +1,7 @@
-import { Button } from '@/components/ui';
 import Image from 'next/image';
-import HeroAnimation from '@/components/HeroAnimation';
+
+import { Button } from '@/components/ui';
+import HeroAnimation from '@/components/HeroAnimation/HeroAnimation';
 
 export default function Home() {
     return (
@@ -8,7 +9,7 @@ export default function Home() {
             <section id="hero" className="flex grow">
                 <div className="container grow flex items-center justify-between">
                     <HeroContent />
-                    <HeroGraphic />
+                    <HeroAnimation />
                 </div>
             </section>
         </main>
@@ -17,7 +18,7 @@ export default function Home() {
 
 function HeroContent() {
     return (
-        <div className="grow">
+        <div className="grow w-full">
             <div className="max-w-[573.49px] flex flex-col items-start gap-16">
                 <div className="flex flex-col gap-12">
                     <h1 className="opacity-80 text-dark-blue text-[84px] font-bold">
@@ -31,14 +32,6 @@ function HeroContent() {
                 </div>
                 <Button size="large">Find a trip buddy</Button>
             </div>
-        </div>
-    );
-}
-
-function HeroGraphic() {
-    return (
-        <div className="grow">
-            <HeroAnimation />
         </div>
     );
 }
