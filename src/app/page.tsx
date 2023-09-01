@@ -12,6 +12,7 @@ export default function Home() {
             <WeveGotYou />
             <Community />
             <HowItWorks />
+            <Download />
         </main>
     );
 }
@@ -275,6 +276,158 @@ function HowItWorks() {
                                 with them.
                             </p>
                         </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function Download() {
+    return (
+        <section id="download" className="bg-[#FC8B4E] isolate overflow-x-clip">
+            <div className="container relative isolate h-full">
+                <div className="absolute inset-0 w-full h-full -z-10 overflow-y-clip overflow-x-visible">
+                    <svg
+                        width="470"
+                        height="404"
+                        viewBox="0 0 470 404"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="absolute top-0 left-0 -translate-x-3/4 -translate-y-3/4 -z-10"
+                    >
+                        <ellipse
+                            cx="234.581"
+                            cy="202"
+                            rx="234.581"
+                            ry="202"
+                            fill="#FC8B4E"
+                        />
+                        <path
+                            d="M431.661 202C431.661 287.785 348.884 366.5 234.581 366.5C120.278 366.5 37.5 287.785 37.5 202C37.5 116.215 120.278 37.5 234.581 37.5C348.884 37.5 431.661 116.215 431.661 202Z"
+                            stroke="#FEBD9A"
+                            strokeOpacity="0.3"
+                            strokeWidth="75"
+                        />
+                    </svg>
+                    <svg
+                        width="831"
+                        height="730"
+                        viewBox="0 0 831 730"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="absolute top-full left-0 -translate-x-3/4 -translate-y-1/4 -z-10"
+                    >
+                        <ellipse
+                            cx="415.226"
+                            cy="364.865"
+                            rx="415.226"
+                            ry="364.865"
+                            fill="#FC8B4E"
+                        />
+                        <path
+                            d="M780.453 364.865C780.453 532.882 623.205 679.73 415.226 679.73C207.248 679.73 50 532.882 50 364.865C50 196.848 207.248 50 415.226 50C623.205 50 780.453 196.848 780.453 364.865Z"
+                            stroke="#FFBAA6"
+                            strokeOpacity="0.57"
+                            strokeWidth="100"
+                        />
+                    </svg>
+                    <svg
+                        width="761"
+                        height="835"
+                        viewBox="0 0 761 835"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="absolute top-0 right-0 translate-x-2/4 -translate-y-3/4 -z-10"
+                    >
+                        <ellipse
+                            cx="380.371"
+                            cy="417.952"
+                            rx="379.938"
+                            ry="417"
+                            fill="#FC8B4E"
+                        />
+                        <path
+                            d="M710.309 417.952C710.309 625.122 558.312 784.952 380.371 784.952C202.429 784.952 50.4331 625.122 50.4331 417.952C50.4331 210.782 202.429 50.9521 380.371 50.9521C558.312 50.9521 710.309 210.782 710.309 417.952Z"
+                            stroke="#FFBAA6"
+                            strokeOpacity="0.57"
+                            strokeWidth="100"
+                        />
+                    </svg>
+                    <svg
+                        width="470"
+                        height="405"
+                        viewBox="0 0 470 405"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="absolute top-full right-0 translate-x-full -translate-y-2/4 -z-10"
+                    >
+                        <ellipse
+                            cx="235"
+                            cy="202.417"
+                            rx="234.581"
+                            ry="202"
+                            fill="#FC8B4E"
+                        />
+                        <path
+                            d="M432.081 202.417C432.081 288.202 349.303 366.917 235 366.917C120.697 366.917 37.9194 288.202 37.9194 202.417C37.9194 116.632 120.697 37.917 235 37.917C349.303 37.917 432.081 116.632 432.081 202.417Z"
+                            stroke="#FEBD9A"
+                            strokeOpacity="0.3"
+                            strokeWidth="75"
+                        />
+                    </svg>
+                </div>
+
+                <div className="flex items-stretch gap-10 flex-col lg:flex-row">
+                    <div className="flex flex-col gap-12 text-white py-[76px]">
+                        <h2 className="font-body text-[40px] font-semibold max-w-[663px] leading-none">
+                            Download our app for smarter, super-easy matching
+                        </h2>
+                        <p className="text-[28px] font-medium max-w-[596px]">
+                            Enjoy exclusive app discounts, receive notifications
+                            if you have been matched
+                        </p>
+                        <div className="flex items-center gap-8">
+                            <button>
+                                <Image
+                                    width={245}
+                                    height={83}
+                                    alt="download on app store"
+                                    src="/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+                                />
+                            </button>
+                            <button>
+                                <Image
+                                    width={273}
+                                    height={82}
+                                    alt="download on play store"
+                                    src="/download-on-google.svg"
+                                />
+                            </button>
+                        </div>
+                    </div>
+                    <div className="grow relative min-h-[300px] translate-y-1/4 lg:translate-y-0">
+                        <Image
+                            width={201}
+                            height={187}
+                            alt="iphone shadow"
+                            src="/iphones-shadow.svg"
+                            className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/4"
+                        />
+                        <Image
+                            width={225}
+                            height={465}
+                            alt="iphone 12 picture"
+                            src="/iphone-12-Pro-2.png"
+                            className="absolute left-1/2 rotate-[15deg] translate-y-10"
+                        />
+                        <Image
+                            width={225}
+                            height={465}
+                            alt="iphone 12 picture"
+                            src="/iphone-12-Pro-1.png"
+                            className="absolute left-[16%]  rotate-[-15deg] -translate-y-12"
+                        />
                     </div>
                 </div>
             </div>
