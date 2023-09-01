@@ -11,6 +11,7 @@ export default function Home() {
             <Services />
             <WeveGotYou />
             <Community />
+            <HowItWorks />
         </main>
     );
 }
@@ -159,7 +160,7 @@ function WeveGotYou() {
 
 function Community() {
     return (
-        <section id="wevegotyou" className="pt-16 pb-8">
+        <section id="join-community" className="pt-16 pb-8">
             <div className="container">
                 <div className="flex items-stretch flex-col-reverse md:flex-row gap-10">
                     <div className="grow w-full center">
@@ -187,6 +188,93 @@ function Community() {
                             alt="online world artwork"
                             src="/online-world-pana.svg"
                         />
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function HowItWorks() {
+    return (
+        <section id="how-it-works" className="pt-7 pb-32 overflow-x-hidden">
+            <div className="container flex flex-col gap-10 md:gap-28 h-full">
+                <h2 className="opacity-80 text-center text-dark-blue text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-medium leading-tight">
+                    How It Works
+                </h2>
+                <div className="relative flex center">
+                    <svg
+                        width="730"
+                        height="707"
+                        viewBox="0 0 730 707"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="flex-none absolute md:static"
+                    >
+                        <path
+                            opacity="0.05"
+                            d="M679.646 353.624C679.646 519.588 540.392 656.771 365.301 656.771C190.211 656.771 50.9565 519.588 50.9565 353.624C50.9565 187.661 190.211 50.4775 365.301 50.4775C540.392 50.4775 679.646 187.661 679.646 353.624Z"
+                            stroke="#FA7C56"
+                            strokeWidth="100"
+                        />
+                    </svg>
+                    <div className="md:absolute flex items-center justify-between w-full flex-col md:flex-row gap-10">
+                        <article className="flex flex-col items-center gap-2 md:gap-4 max-w-[330px]">
+                            <Image
+                                width={217}
+                                height={195}
+                                alt="mobile list artwork"
+                                src="/mobile-note-list-cuate.svg"
+                            />
+                            <div className="text-white text-xl font-semibold center bg-primary-orange aspect-square w-9 rounded-full outline outline-primary-orange/20 outline-2 outline-offset-4">
+                                1
+                            </div>
+                            <h3 className="text-primary-orange text-xl md:text-2xl lg:text-[28px] font-semibold font-body">
+                                Find a trip
+                            </h3>
+                            <p className="opacity-70 text-center text-dark-blue sm:text-base md:text-lg lg:text-xl font-medium">
+                                Make a trip by selecting a destination that you
+                                are traveling to or find existing trips.
+                            </p>
+                        </article>
+                        <article className="flex flex-col items-center gap-2 md:gap-4 max-w-[330px] md:-translate-y-56">
+                            <Image
+                                width={211}
+                                height={204}
+                                src="/messages-cuate.svg"
+                                alt="mobile messages artwork"
+                            />
+                            <div className="text-white text-xl font-semibold center bg-primary-orange aspect-square w-9 rounded-full outline outline-primary-orange/20 outline-2 outline-offset-4">
+                                2
+                            </div>
+                            <h3 className="text-primary-orange text-xl md:text-2xl lg:text-[28px] font-semibold font-body">
+                                Get Connected
+                            </h3>
+                            <p className="opacity-70 text-center text-dark-blue sm:text-base md:text-lg lg:text-xl font-medium">
+                                Swipe and get matched with someone that is
+                                heading to the same location and start chatting
+                                with them.
+                            </p>
+                        </article>
+                        <article className="flex flex-col items-center gap-2 md:gap-4 max-w-[330px]">
+                            <Image
+                                width={249}
+                                height={223}
+                                src="/trip-amico.svg"
+                                alt="planning a trip artwork"
+                            />
+                            <div className="text-white text-xl font-semibold center bg-primary-orange aspect-square w-9 rounded-full outline outline-primary-orange/20 outline-2 outline-offset-4">
+                                3
+                            </div>
+                            <h3 className="text-primary-orange text-xl md:text-2xl lg:text-[28px] font-semibold font-body">
+                                Get Connected
+                            </h3>
+                            <p className="opacity-70 text-center text-dark-blue sm:text-base md:text-lg lg:text-xl font-medium">
+                                Swipe and get matched with someone that is
+                                heading to the same location and start chatting
+                                with them.
+                            </p>
+                        </article>
                     </div>
                 </div>
             </div>
