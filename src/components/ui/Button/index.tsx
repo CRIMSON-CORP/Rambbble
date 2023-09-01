@@ -26,7 +26,7 @@ const Button: FC<ButtonProps> = ({
     variant = 'contained',
     size = 'normal',
 }) => {
-    const className = `px-6 py-4 rounded-[10px] hover:scale-105 active:scale-100 transition-all duraton-300 ease-out hover:shadow-md font-semibold tracking-wide ${
+    const className = `px-6 py-4 rounded-[10px] hover:scale-105 active:scale-100 transition-all duraton-300 ease-out block shadow-md hover:shadow-lg font-semibold tracking-wide ${
         size === 'normal' ? 'text-base' : 'text-2xl'
     } ${
         variant === 'contained'

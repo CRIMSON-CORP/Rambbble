@@ -21,6 +21,9 @@ const config: Config = {
             backgroundImage: {
                 primary: 'linear-gradient(90deg, #FC8B4E 0%, #F86463 100%)',
             },
+            zIndex: {
+                'side-bar': '99',
+            },
             container: {
                 center: true,
                 padding: {
