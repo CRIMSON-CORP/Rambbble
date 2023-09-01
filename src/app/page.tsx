@@ -9,6 +9,7 @@ export default function Home() {
         <main className="flex flex-col">
             <Hero />
             <Services />
+            <WeveGotYou />
         </main>
     );
 }
@@ -114,3 +115,43 @@ const Service: FC<ServiceProps> = ({ imagePath, description }) => {
         </article>
     );
 };
+
+function WeveGotYou() {
+    return (
+        <section id="wevegotyou" className="pt-7">
+            <div className="container flex flex-col gap-16">
+                <h2 className="opacity-80 text-center text-dark-blue text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-medium leading-tight">
+                    We&apos;ve Got You!
+                </h2>
+                <div className="flex items-stretch flex-col md:flex-row gap-10">
+                    <div className="grow w-full center">
+                        <Image
+                            width={500}
+                            height={500}
+                            alt="traverlers artwork"
+                            src="/travelers-pana.svg"
+                        />
+                    </div>
+                    <div className="grow w-full center">
+                        <div className="flex-col justify-start items-start gap-6 md:gap-10 lg:gap-16 inline-flex">
+                            <div className="flex-col justify-start items-start gap-2 sm:gap-4 lg:gap-8 flex">
+                                <h3 className="text-red-400 text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight">
+                                    For all kinds of trips
+                                </h3>
+                                <div className="max-w-[535px] text-dark-blue text-base sm:text-lg md:text-xl lg:text-2xl font-light leading-normal">
+                                    Whether it&apos;s for a quick getaway,
+                                    sightseeing, city-hopping, vacation or a
+                                    work trip, you can always find the right
+                                    person to do that with on Rambbble.
+                                </div>
+                            </div>
+                            <Button variant="outlined">
+                                Find someone in your city
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}

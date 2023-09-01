@@ -16,3 +16,9 @@
         @apply font-header;
     }
 }
+
+@layer components {
+    .center {
+        @apply flex justify-center items-center;
+    }
+}
