@@ -10,6 +10,7 @@ function Logo() {
             width={231.1}
             height={33.39}
             priority={true}
+            className="max-w-[150px]"
         />
     );
 }

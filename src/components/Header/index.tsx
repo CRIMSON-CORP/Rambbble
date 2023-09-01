@@ -16,7 +16,7 @@ function Header() {
             <div className="container">
                 <div className="flex items-center justify-between">
                     <Logo />
-                    <div className="hidden xl:contents">
+                    <div className="hidden lg:contents">
                         <NavLinks />
                         <div className="flex items-center gap-10">
                             <Button variant="outlined" href="/login">
@@ -25,7 +25,7 @@ function Header() {
                             <Button>Find a trip buddy</Button>
                         </div>
                     </div>
-                    <button className="inline-block xl:hidden" onClick={open}>
+                    <button className="inline-block lg:hidden" onClick={open}>
                         <RxHamburgerMenu
                             size={32}
                             className="text-primary-orange"

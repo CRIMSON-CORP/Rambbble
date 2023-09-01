@@ -17,7 +17,7 @@ function HeroAnimation() {
             });
         }
     }, []);
-    return <div className="grow w-full" ref={animationContainer}></div>;
+    return <div className="sm:grow w-full" ref={animationContainer}></div>;
 }
 
 export default HeroAnimation;

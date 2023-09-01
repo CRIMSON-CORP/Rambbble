@@ -98,6 +98,7 @@ function MobileNav({ state, close }: MobileNavProps): JSX.Element {
                         <motion.div
                             initial="initial"
                             animate="animate"
+                            onClick={close}
                             variants={underlayVariants}
                             className="-z-10 absolute inset-0 w-full h-full"
                         >
