@@ -10,6 +10,7 @@ export default function Home() {
             <Hero />
             <Services />
             <WeveGotYou />
+            <Community />
         </main>
     );
 }
@@ -149,6 +150,43 @@ function WeveGotYou() {
                                 Find someone in your city
                             </Button>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function Community() {
+    return (
+        <section id="wevegotyou" className="pt-16 pb-8">
+            <div className="container">
+                <div className="flex items-stretch flex-col-reverse md:flex-row gap-10">
+                    <div className="grow w-full center">
+                        <div className="flex-col justify-start items-start gap-6 md:gap-10 lg:gap-16 inline-flex">
+                            <div className="flex-col justify-start items-start gap-2 sm:gap-4 lg:gap-8 flex">
+                                <h3 className="text-red-400 text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight">
+                                    A trustworthy community
+                                </h3>
+                                <div className="max-w-[535px] text-dark-blue text-base sm:text-lg md:text-xl lg:text-2xl font-light leading-normal">
+                                    We are building a community to connect
+                                    travelers all around the world. We are
+                                    creating a trustworthy environment where
+                                    people can share moments and experiences.
+                                </div>
+                            </div>
+                            <Button variant="outlined">
+                                Join the community
+                            </Button>
+                        </div>
+                    </div>
+                    <div className="grow w-full center">
+                        <Image
+                            width={594}
+                            height={438}
+                            alt="online world artwork"
+                            src="/online-world-pana.svg"
+                        />
                     </div>
                 </div>
             </div>
