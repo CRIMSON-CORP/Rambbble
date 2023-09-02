@@ -3,8 +3,22 @@ import Image from 'next/image';
 
 import { Button } from '@/components/ui';
 import HeroAnimation from '@/components/HeroAnimation/HeroAnimation';
+import { GetServerSidePropsResult } from 'next';
 
-export default function Home() {
+async function pageLoaderDelay(): Promise<GetServerSidePropsResult<{}>> {
+    await new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('');
+        }, 5000);
+    });
+    return {
+        props: {},
+    };
+}
+
+export default async function Home() {
+    const response = await pageLoaderDelay();
+
     return (
         <main className="flex flex-col">
             <Hero />
