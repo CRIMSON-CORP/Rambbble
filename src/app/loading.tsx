@@ -23,8 +23,8 @@ export default loading;
 function Logo() {
     return (
         <svg
-            width="120"
-            height="120"
+            width="240"
+            height="240"
             viewBox="0 0 85 85"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -138,8 +138,8 @@ function Logo() {
 function Pulse() {
     return (
         <svg
-            width="192"
-            height="192"
+            width="384"
+            height="384"
             viewBox="0 0 192 192"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
