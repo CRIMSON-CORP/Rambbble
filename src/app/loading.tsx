@@ -1,7 +1,3 @@
-'use client';
-import React, { useEffect, useLayoutEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-
 function loading() {
     return (
         <aside
