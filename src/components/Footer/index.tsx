@@ -41,7 +41,7 @@ function Footer() {
                     width={279.41}
                     height={152.98}
                     alt="footer cloud"
-                    className="absolute bottom-14 -right-5"
+                    className="absolute top-12 md:bottom-14 right-0 md:-right-5"
                     src="/footer-cloud.svg"
                 />
             </div>

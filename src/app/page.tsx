@@ -379,16 +379,16 @@ function Download() {
                     </svg>
                 </div>
 
-                <div className="flex items-stretch gap-10 flex-col lg:flex-row">
-                    <div className="flex flex-col gap-12 text-white py-[76px]">
-                        <h2 className="font-body text-[40px] font-semibold max-w-[663px] leading-none">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 flex-col lg:flex-row">
+                    <div className="flex flex-col gap-4 sm:gap-8 dm:gap-12 text-white py-[76px]">
+                        <h2 className="font-body text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-semibold max-w-[663px] leading-none">
                             Download our app for smarter, super-easy matching
                         </h2>
-                        <p className="text-[28px] font-medium max-w-[596px]">
+                        <p className="text-lg sm:text-xl md:text-2xl lg:text-[28px] font-medium max-w-[596px]">
                             Enjoy exclusive app discounts, receive notifications
                             if you have been matched
                         </p>
-                        <div className="flex items-center gap-8">
+                        <div className="flex items-center gap-8 flex-wrap">
                             <button>
                                 <Image
                                     width={245}
@@ -409,25 +409,12 @@ function Download() {
                     </div>
                     <div className="grow relative min-h-[300px] translate-y-1/4 lg:translate-y-0">
                         <Image
-                            width={201}
-                            height={187}
-                            alt="iphone shadow"
-                            src="/iphones-shadow.svg"
-                            className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/4"
-                        />
-                        <Image
-                            width={225}
-                            height={465}
-                            alt="iphone 12 picture"
-                            src="/iphone-12-Pro-2.png"
-                            className="absolute left-1/2 rotate-[15deg] translate-y-10"
-                        />
-                        <Image
-                            width={225}
-                            height={465}
-                            alt="iphone 12 picture"
-                            src="/iphone-12-Pro-1.png"
-                            className="absolute left-[16%]  rotate-[-15deg] -translate-y-12"
+                            width={534.14}
+                            height={588.22}
+                            alt="iphones"
+                            src="/iphones.png"
+                            quality={100}
+                            className="w-full absolute top-0 -translate-y-24"
                         />
                     </div>
                 </div>
@@ -441,9 +428,9 @@ function WaitList() {
         <section id="waitlist" className="pt-80 md:pt-52 pb-24">
             <div className="container">
                 <div className="bg-primary rounded-[20px] flex items-stretch overflow-hidden">
-                    <div className="grow py-16 md:py-20 px-8 md:pl-28 ">
+                    <div className="grow py-8 sm:py-16 md:py-20 px-5 md:px-8 md:pl-28 ">
                         <div className="h-full flex flex-col justify-center gap-3 text-white max-w-[515px]">
-                            <h2 className="font-poppins font-semibold text-4xl">
+                            <h2 className="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl">
                                 Subscribe to our newsletter
                             </h2>
                             <p className="text-lg">
@@ -472,9 +459,9 @@ const WaitListForm = (): JSX.Element => {
             <input
                 type="text"
                 placeholder="Your email here"
-                className="font-medium text-black text-lg placeholder:text-slate-800 placeholder:text-opacity-50 placegolder:font-light pl-5 outline-none grow"
+                className="font-medium text-black text-sm sm:text-base md:text-lg placeholder:text-slate-800 placeholder:text-opacity-50 placegolder:font-light pl-2 md:pl-5 outline-none grow w-full"
             />
-            <button className="bg-primary text-white text-lg px-5 py-2 rounded hover:scale-105 transition-transform duration-300 ease-out">
+            <button className="bg-primary text-white text-sm sm:text-base md:text-lg whitespace-nowrap px-5 py-2 rounded hover:scale-105 transition-transform duration-300 ease-out">
                 Join Now
             </button>
         </form>
