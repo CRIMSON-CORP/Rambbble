@@ -1,3 +1,4 @@
+'use client';
 import { FC } from 'react';
 import Image from 'next/image';
 
@@ -5,20 +6,7 @@ import { Button } from '@/components/ui';
 import HeroAnimation from '@/components/HeroAnimation/HeroAnimation';
 import { GetServerSidePropsResult } from 'next';
 
-async function pageLoaderDelay(): Promise<GetServerSidePropsResult<{}>> {
-    await new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve('');
-        }, 5000);
-    });
-    return {
-        props: {},
-    };
-}
-
-export default async function Home() {
-    await pageLoaderDelay();
-
+export default function Home() {
     return (
         <main className="flex flex-col">
             <Hero />
@@ -30,6 +18,19 @@ export default async function Home() {
             <WaitList />
         </main>
     );
+}
+
+export async function getServerSideProps(): Promise<
+    GetServerSidePropsResult<{}>
+> {
+    await new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('');
+        }, 5000);
+    });
+    return {
+        props: {},
+    };
 }
 
 function Hero() {

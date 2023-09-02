@@ -1,18 +1,33 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+
 import NavLinksList from '@/config/nav-links';
+import {
+    headerNavLinksWrapperVariants,
+    headerSlideDownVariants,
+} from '@/utils/framer-motion-variants';
+
 import NavLink from './NavLink';
 
 function NavLinks() {
     return (
         <nav aria-labelledby="Primary Nav link">
-            <ul
-                className="list-none flex items-center gap-8"
+            <motion.ul
                 id="nav-link-list"
+                initial="hidden"
+                animate="animate"
+                variants={headerNavLinksWrapperVariants}
+                className="list-none flex items-center gap-8"
             >
                 {NavLinksList.map((link) => (
-                    <NavLink key={link.path} {...link} />
+                    <motion.div
+                        key={link.path}
+                        variants={headerSlideDownVariants}
+                    >
+                        <NavLink {...link} />
+                    </motion.div>
                 ))}
-            </ul>
+            </motion.ul>
         </nav>
     );
 }
