@@ -29,7 +29,7 @@ const listWrapperVariants: Variants = {
     animate: {
         x: '0',
         transition: {
-            duration: 1,
+            duration: 1.25,
             type: 'tween',
             ease: [0.17, 0.67, 0, 1],
         },
@@ -121,13 +121,17 @@ function MobileNav({ state, close }: MobileNavProps): JSX.Element {
                         </motion.li>
                         <motion.li custom={5} variants={listItemVaraints}>
                             <div>
-                                <Button variant="outlined" href="/login">
+                                <Button
+                                    href="/login"
+                                    size="large"
+                                    variant="outlined"
+                                >
                                     Log In
                                 </Button>
                             </div>
                         </motion.li>
                         <motion.li custom={6} variants={listItemVaraints}>
-                            <Button>Find a trip buddy</Button>
+                            <Button size="large">Find a trip buddy</Button>
                         </motion.li>
                     </motion.ul>
                 </nav>
