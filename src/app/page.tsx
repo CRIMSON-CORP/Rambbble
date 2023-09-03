@@ -1,4 +1,5 @@
-import { FC } from 'react';
+'use client';
+import { FC, useEffect } from 'react';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui';
@@ -7,19 +8,25 @@ import AnimatedText from '@/components/AnimatedText';
 import SlideInContent from '@/components/SlideInContent';
 import ArticleContent from '@/components/ArticleContent';
 import WaitListSection from '@/components/WaitlistSection';
+import useToggle from '@/hooks/useToggle';
 
-// async function pageDelay(): Promise<never> {
-//     await new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             resolve(undefined);
-//         }, 5000);
-//     });
+import Loading from './loading';
 
-//     return undefined as never;
-// }
+export default function Home() {
+    const { state, close } = useToggle(true);
 
-export default async function Home() {
-    // await pageDelay();
+    useEffect(() => {
+        const timeout = setTimeout(close, 5000);
+
+        return () => {
+            clearTimeout(timeout);
+        };
+    }, [close]);
+
+    if (state) {
+        return <Loading />;
+    }
+
     return (
         <main className="flex flex-col">
             <Hero />
