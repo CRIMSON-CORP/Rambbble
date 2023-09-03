@@ -1,33 +1,25 @@
 import { FC } from 'react';
 import Image from 'next/image';
-import { GetServerSidePropsResult } from 'next';
-import { motion } from 'framer-motion';
 
 import { Button } from '@/components/ui';
 import HeroAnimation from '@/components/HeroAnimation/HeroAnimation';
 import AnimatedText from '@/components/AnimatedText';
 import SlideInContent from '@/components/SlideInContent';
-import {
-    articleContent,
-    articleContentWRapper,
-} from '@/utils/framer-motion-variants';
 import ArticleContent from '@/components/ArticleContent';
 import WaitListSection from '@/components/WaitlistSection';
 
-export async function pageDelay(): Promise<GetServerSidePropsResult<{}>> {
+async function pageDelay(): Promise<never> {
     await new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve('');
+            resolve(undefined);
         }, 5000);
     });
 
-    return {
-        props: {},
-    };
+    return undefined as never;
 }
 
 export default async function Home() {
-    // await pageDelay();
+    await pageDelay();
     return (
         <main className="flex flex-col">
             <Hero />
