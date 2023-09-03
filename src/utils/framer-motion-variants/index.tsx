@@ -5,7 +5,7 @@ export const headerNavLinksWrapperVariants: Variants = {
     animate: {
         transition: {
             staggerChildren: 0.125 / 2,
-            delayChildren: 0.25,
+            delayChildren: 5.25,
         },
     },
 };
@@ -15,7 +15,7 @@ export const headerCTAsWrapperVariants: Variants = {
     animate: {
         transition: {
             staggerChildren: 0.125 / 2,
-            delayChildren: 0.35,
+            delayChildren: 5.35,
         },
     },
 };
@@ -30,6 +30,40 @@ export const headerSlideDownVariants: Variants = {
         y: 0,
         transition: {
             duration: 1,
+            type: 'tween',
+            ease: [0.23, 1.14, 0.45, 0.97],
+        },
+    },
+};
+
+export const headerLogoSlideDownVariants: Variants = {
+    hidden: {
+        opacity: 0,
+        y: '-200%',
+    },
+    animate: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            // delay: 5,
+            duration: 1,
+            type: 'tween',
+            ease: [0.23, 1.14, 0.45, 0.97],
+        },
+    },
+};
+
+export const headerCTAContentVariants: Variants = {
+    hidden: {
+        opacity: 0,
+        y: '-200%',
+    },
+    animate: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 1,
+            delay: 5,
             type: 'tween',
             ease: [0.23, 1.14, 0.45, 0.97],
         },

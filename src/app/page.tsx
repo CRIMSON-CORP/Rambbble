@@ -1,12 +1,26 @@
-'use client';
 import { FC } from 'react';
 import Image from 'next/image';
+import { GetServerSidePropsResult } from 'next';
+import { motion } from 'framer-motion';
 
 import { Button } from '@/components/ui';
 import HeroAnimation from '@/components/HeroAnimation/HeroAnimation';
-import { GetServerSidePropsResult } from 'next';
+import AnimatedText from '@/components/AnimatedText';
 
-export default function Home() {
+export async function pageDelay(): Promise<GetServerSidePropsResult<{}>> {
+    await new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('');
+        }, 5000);
+    });
+
+    return {
+        props: {},
+    };
+}
+
+export default async function Home() {
+    await pageDelay();
     return (
         <main className="flex flex-col">
             <Hero />
@@ -18,19 +32,6 @@ export default function Home() {
             <WaitList />
         </main>
     );
-}
-
-export async function getServerSideProps(): Promise<
-    GetServerSidePropsResult<{}>
-> {
-    await new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve('');
-        }, 5000);
-    });
-    return {
-        props: {},
-    };
 }
 
 function Hero() {
@@ -62,7 +63,7 @@ function HeroContent() {
             <div className="max-w-[573.49px] flex flex-col items-start gap-5 sm:gap-7 md:gap-10 xl:gap-16">
                 <div className="flex flex-col gap-4 sm:gap-6 md:gap-8 xl:gap-12">
                     <h1 className="opacity-80 text-dark-blue text-4xl sm:text-5xl md:text-6xl xl:text-[84px] font-bold">
-                        Find your trip buddy!
+                        <AnimatedText>Find your trip buddy!</AnimatedText>
                     </h1>
                     <div className="opacity-70 text-faint-dark-blue text-base sm:text-lg xl:text-2xl font-normal">
                         Rambble connects people with the same passion -
