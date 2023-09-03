@@ -8,18 +8,18 @@ import SlideInContent from '@/components/SlideInContent';
 import ArticleContent from '@/components/ArticleContent';
 import WaitListSection from '@/components/WaitlistSection';
 
-async function pageDelay(): Promise<never> {
-    await new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(undefined);
-        }, 5000);
-    });
+// async function pageDelay(): Promise<never> {
+//     await new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve(undefined);
+//         }, 5000);
+//     });
 
-    return undefined as never;
-}
+//     return undefined as never;
+// }
 
 export default async function Home() {
-    await pageDelay();
+    // await pageDelay();
     return (
         <main className="flex flex-col">
             <Hero />
