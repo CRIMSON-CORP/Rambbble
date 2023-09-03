@@ -2,6 +2,8 @@
 import { Variants, motion } from 'framer-motion';
 import React, { FC, memo, useMemo } from 'react';
 
+import { inViewPropsAll } from '@/utils/framer-motion-variants';
+
 interface AnimatedTextProps {
     children: string;
 }
@@ -54,7 +56,8 @@ const AnimatedText: FC<AnimatedTextProps> = ({ children }) => {
         <motion.div
             className=""
             initial="hidden"
-            animate="animate"
+            whileInView="animate"
+            viewport={inViewPropsAll}
             variants={wrapperVariants}
         >
             {words}

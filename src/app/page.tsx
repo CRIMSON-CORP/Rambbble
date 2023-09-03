@@ -6,6 +6,13 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui';
 import HeroAnimation from '@/components/HeroAnimation/HeroAnimation';
 import AnimatedText from '@/components/AnimatedText';
+import SlideInContent from '@/components/SlideInContent';
+import {
+    articleContent,
+    articleContentWRapper,
+} from '@/utils/framer-motion-variants';
+import ArticleContent from '@/components/ArticleContent';
+import WaitListSection from '@/components/WaitlistSection';
 
 export async function pageDelay(): Promise<GetServerSidePropsResult<{}>> {
     await new Promise((resolve, reject) => {
@@ -20,7 +27,7 @@ export async function pageDelay(): Promise<GetServerSidePropsResult<{}>> {
 }
 
 export default async function Home() {
-    await pageDelay();
+    // await pageDelay();
     return (
         <main className="flex flex-col">
             <Hero />
@@ -65,13 +72,17 @@ function HeroContent() {
                     <h1 className="opacity-80 text-dark-blue text-4xl sm:text-5xl md:text-6xl xl:text-[84px] font-bold">
                         <AnimatedText>Find your trip buddy!</AnimatedText>
                     </h1>
-                    <div className="opacity-70 text-faint-dark-blue text-base sm:text-lg xl:text-2xl font-normal">
-                        Rambble connects people with the same passion -
-                        traveling! Our goal is to help you find Travel Buddies
-                        and Make New Friends
-                    </div>
+                    <SlideInContent delay={0.25}>
+                        <div className="opacity-70 text-faint-dark-blue text-base sm:text-lg xl:text-2xl font-normal">
+                            Rambble connects people with the same passion -
+                            traveling! Our goal is to help you find Travel
+                            Buddies and Make New Friends
+                        </div>
+                    </SlideInContent>
                 </div>
-                <Button size="large">Find a trip buddy</Button>
+                <SlideInContent delay={0.5}>
+                    <Button size="large">Find a trip buddy</Button>
+                </SlideInContent>
             </div>
         </div>
     );
@@ -105,7 +116,7 @@ function Services() {
         <section id="services" className="pt-16 pb-9">
             <div className="container flex flex-col gap-16">
                 <h2 className="opacity-80 text-center text-dark-blue text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-medium leading-tight">
-                    Have you ever felt this way?
+                    <AnimatedText>Have you ever felt this way?</AnimatedText>
                 </h2>
                 <div className="flex items-stretch justify-center gap-6 flex-wrap lg:flex-nowrap">
                     {servicesContent.map((serviceContent) => (
@@ -122,17 +133,19 @@ function Services() {
 
 const Service: FC<ServiceProps> = ({ imagePath, description }) => {
     return (
-        <article className="grow w-full px-4 sm:px-6 md:px-9 py-4 sm:py-6 md:py-8 bg-white rounded-[20px] border border-neutral-200 justify-center items-center flex-col inline-flex">
-            <Image
-                width={300}
-                height={243}
-                src={imagePath}
-                alt="service artwork"
-            />
-            <p className="text-center text-zinc-600 text-base sm:text-xl font-normal leading-[29.29px]">
-                {description}
-            </p>
-        </article>
+        <SlideInContent className="grow w-full">
+            <article className="h-full px-4 sm:px-6 md:px-9 py-4 sm:py-6 md:py-8 bg-white rounded-[20px] border border-neutral-200 justify-center items-center flex-col inline-flex">
+                <Image
+                    width={300}
+                    height={243}
+                    src={imagePath}
+                    alt="service artwork"
+                />
+                <p className="text-center text-zinc-600 text-base sm:text-xl font-normal leading-[29.29px]">
+                    {description}
+                </p>
+            </article>
+        </SlideInContent>
     );
 };
 
@@ -141,33 +154,43 @@ function WeveGotYou() {
         <section id="wevegotyou" className="pt-7">
             <div className="container flex flex-col gap-16">
                 <h2 className="opacity-80 text-center text-dark-blue text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-medium leading-tight">
-                    We&apos;ve Got You!
+                    <AnimatedText>We&apos;ve Got You!</AnimatedText>
                 </h2>
                 <div className="flex items-stretch flex-col md:flex-row gap-10">
-                    <div className="grow w-full center">
+                    <SlideInContent
+                        y={0}
+                        x={-200}
+                        className="grow w-full center"
+                    >
                         <Image
                             width={500}
                             height={500}
                             alt="traverlers artwork"
                             src="/travelers-pana.svg"
                         />
-                    </div>
+                    </SlideInContent>
                     <div className="grow w-full center">
                         <div className="flex-col justify-start items-start gap-6 md:gap-10 lg:gap-16 inline-flex">
                             <div className="flex-col justify-start items-start gap-2 sm:gap-4 lg:gap-8 flex">
-                                <h3 className="text-red-400 text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight">
-                                    For all kinds of trips
-                                </h3>
-                                <div className="max-w-[535px] text-dark-blue text-base sm:text-lg md:text-xl lg:text-2xl font-light leading-normal">
-                                    Whether it&apos;s for a quick getaway,
-                                    sightseeing, city-hopping, vacation or a
-                                    work trip, you can always find the right
-                                    person to do that with on Rambbble.
-                                </div>
+                                <SlideInContent>
+                                    <h3 className="text-red-400 text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight">
+                                        For all kinds of trips
+                                    </h3>
+                                </SlideInContent>
+                                <SlideInContent>
+                                    <div className="max-w-[535px] text-dark-blue text-base sm:text-lg md:text-xl lg:text-2xl font-light leading-normal">
+                                        Whether it&apos;s for a quick getaway,
+                                        sightseeing, city-hopping, vacation or a
+                                        work trip, you can always find the right
+                                        person to do that with on Rambbble.
+                                    </div>
+                                </SlideInContent>
                             </div>
-                            <Button variant="outlined">
-                                Find someone in your city
-                            </Button>
+                            <SlideInContent>
+                                <Button variant="outlined">
+                                    Find someone in your city
+                                </Button>
+                            </SlideInContent>
                         </div>
                     </div>
                 </div>
@@ -184,29 +207,40 @@ function Community() {
                     <div className="grow w-full center">
                         <div className="flex-col justify-start items-start gap-6 md:gap-10 lg:gap-16 inline-flex">
                             <div className="flex-col justify-start items-start gap-2 sm:gap-4 lg:gap-8 flex">
-                                <h3 className="text-red-400 text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight">
-                                    A trustworthy community
-                                </h3>
-                                <div className="max-w-[535px] text-dark-blue text-base sm:text-lg md:text-xl lg:text-2xl font-light leading-normal">
-                                    We are building a community to connect
-                                    travelers all around the world. We are
-                                    creating a trustworthy environment where
-                                    people can share moments and experiences.
-                                </div>
+                                <SlideInContent>
+                                    <h3 className="text-red-400 text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight">
+                                        A trustworthy community
+                                    </h3>
+                                </SlideInContent>
+                                <SlideInContent>
+                                    <div className="max-w-[535px] text-dark-blue text-base sm:text-lg md:text-xl lg:text-2xl font-light leading-normal">
+                                        We are building a community to connect
+                                        travelers all around the world. We are
+                                        creating a trustworthy environment where
+                                        people can share moments and
+                                        experiences.
+                                    </div>
+                                </SlideInContent>
                             </div>
-                            <Button variant="outlined">
-                                Join the community
-                            </Button>
+                            <SlideInContent>
+                                <Button variant="outlined">
+                                    Join the community
+                                </Button>
+                            </SlideInContent>
                         </div>
                     </div>
-                    <div className="grow w-full center">
+                    <SlideInContent
+                        y={0}
+                        x={200}
+                        className="grow w-full center"
+                    >
                         <Image
                             width={594}
                             height={438}
                             alt="online world artwork"
                             src="/online-world-pana.svg"
                         />
-                    </div>
+                    </SlideInContent>
                 </div>
             </div>
         </section>
@@ -218,7 +252,7 @@ function HowItWorks() {
         <section id="how-it-works" className="pt-7 pb-32 overflow-x-hidden">
             <div className="container flex flex-col gap-10 md:gap-28 h-full">
                 <h2 className="opacity-80 text-center text-dark-blue text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-medium leading-tight">
-                    How It Works
+                    <AnimatedText>How It Works</AnimatedText>
                 </h2>
                 <div className="relative flex center">
                     <svg
@@ -237,62 +271,37 @@ function HowItWorks() {
                         />
                     </svg>
                     <div className="md:absolute flex items-center justify-between w-full flex-col md:flex-row gap-10">
-                        <article className="flex flex-col items-center gap-2 md:gap-4 max-w-[330px]">
-                            <Image
-                                width={217}
-                                height={195}
-                                alt="mobile list artwork"
-                                src="/mobile-note-list-cuate.svg"
-                            />
-                            <div className="text-white text-xl font-semibold center bg-primary-orange aspect-square w-9 rounded-full outline outline-primary-orange/20 outline-2 outline-offset-4">
-                                1
-                            </div>
-                            <h3 className="text-primary-orange text-xl md:text-2xl lg:text-[28px] font-semibold font-body">
-                                Find a trip
-                            </h3>
-                            <p className="opacity-70 text-center text-dark-blue sm:text-base md:text-lg lg:text-xl font-medium">
-                                Make a trip by selecting a destination that you
-                                are traveling to or find existing trips.
-                            </p>
-                        </article>
-                        <article className="flex flex-col items-center gap-2 md:gap-4 max-w-[330px] md:-translate-y-56">
-                            <Image
-                                width={211}
-                                height={204}
-                                src="/messages-cuate.svg"
-                                alt="mobile messages artwork"
-                            />
-                            <div className="text-white text-xl font-semibold center bg-primary-orange aspect-square w-9 rounded-full outline outline-primary-orange/20 outline-2 outline-offset-4">
-                                2
-                            </div>
-                            <h3 className="text-primary-orange text-xl md:text-2xl lg:text-[28px] font-semibold font-body">
-                                Get Connected
-                            </h3>
-                            <p className="opacity-70 text-center text-dark-blue sm:text-base md:text-lg lg:text-xl font-medium">
-                                Swipe and get matched with someone that is
+                        <ArticleContent
+                            index={1}
+                            width={217}
+                            height={195}
+                            title="Find a trip"
+                            description="Make a trip by selecting a destination that you
+                                are traveling to or find existing trips."
+                            imageAlt="mobile list artwork"
+                            imagePath="/mobile-note-list-cuate.svg"
+                        />
+                        <ArticleContent
+                            index={2}
+                            width={211}
+                            height={204}
+                            title="Get Connected"
+                            description="Swipe and get matched with someone that is
                                 heading to the same location and start chatting
-                                with them.
-                            </p>
-                        </article>
-                        <article className="flex flex-col items-center gap-2 md:gap-4 max-w-[330px]">
-                            <Image
-                                width={249}
-                                height={223}
-                                src="/trip-amico.svg"
-                                alt="planning a trip artwork"
-                            />
-                            <div className="text-white text-xl font-semibold center bg-primary-orange aspect-square w-9 rounded-full outline outline-primary-orange/20 outline-2 outline-offset-4">
-                                3
-                            </div>
-                            <h3 className="text-primary-orange text-xl md:text-2xl lg:text-[28px] font-semibold font-body">
-                                Get Connected
-                            </h3>
-                            <p className="opacity-70 text-center text-dark-blue sm:text-base md:text-lg lg:text-xl font-medium">
-                                Swipe and get matched with someone that is
-                                heading to the same location and start chatting
-                                with them.
-                            </p>
-                        </article>
+                                with them."
+                            imageAlt="mobile messages artwork"
+                            imagePath="/messages-cuate.svg"
+                            className="md:-translate-y-56"
+                        />
+                        <ArticleContent
+                            index={3}
+                            width={249}
+                            height={223}
+                            title="Trip Together"
+                            description="Plan together, meet up with your travel companion at a pre-decided public place and travel together."
+                            imageAlt="planning a trip artwork"
+                            imagePath="/trip-amico.svg"
+                        />
                     </div>
                 </div>
             </div>
@@ -398,41 +407,52 @@ function Download() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 flex-col lg:flex-row">
                     <div className="flex flex-col gap-4 sm:gap-8 dm:gap-12 text-white py-[76px]">
                         <h2 className="font-body text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-semibold max-w-[663px] leading-none">
-                            Download our app for smarter, super-easy matching
+                            <AnimatedText>
+                                Download our app for smarter, super-easy
+                                matching
+                            </AnimatedText>
                         </h2>
-                        <p className="text-lg sm:text-xl md:text-2xl lg:text-[28px] font-medium max-w-[596px]">
-                            Enjoy exclusive app discounts, receive notifications
-                            if you have been matched
-                        </p>
+                        <SlideInContent>
+                            <p className="text-lg sm:text-xl md:text-2xl lg:text-[28px] font-medium max-w-[596px]">
+                                Enjoy exclusive app discounts, receive
+                                notifications if you have been matched
+                            </p>
+                        </SlideInContent>
                         <div className="flex items-center gap-8 flex-wrap">
-                            <button>
-                                <Image
-                                    width={245}
-                                    height={83}
-                                    alt="download on app store"
-                                    src="/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
-                                />
-                            </button>
-                            <button>
-                                <Image
-                                    width={273}
-                                    height={82}
-                                    alt="download on play store"
-                                    src="/download-on-google.svg"
-                                />
-                            </button>
+                            <SlideInContent>
+                                <button>
+                                    <Image
+                                        width={245}
+                                        height={83}
+                                        alt="download on app store"
+                                        src="/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+                                    />
+                                </button>
+                            </SlideInContent>
+                            <SlideInContent>
+                                <button>
+                                    <Image
+                                        width={273}
+                                        height={82}
+                                        alt="download on play store"
+                                        src="/download-on-google.svg"
+                                    />
+                                </button>
+                            </SlideInContent>
                         </div>
                     </div>
-                    <div className="grow relative min-h-[300px] translate-y-1/4 lg:translate-y-0">
-                        <Image
-                            width={534.14}
-                            height={588.22}
-                            alt="iphones"
-                            src="/iphones.png"
-                            quality={100}
-                            className="w-full absolute top-0 -translate-y-24"
-                        />
-                    </div>
+                    <SlideInContent>
+                        <div className="grow relative min-h-[300px] translate-y-1/4 lg:translate-y-0">
+                            <Image
+                                width={534.14}
+                                height={588.22}
+                                alt="iphones"
+                                src="/iphones.png"
+                                quality={100}
+                                className="w-full absolute top-0 -translate-y-24"
+                            />
+                        </div>
+                    </SlideInContent>
                 </div>
             </div>
         </section>
@@ -443,43 +463,8 @@ function WaitList() {
     return (
         <section id="waitlist" className="pt-80 md:pt-52 pb-24">
             <div className="container">
-                <div className="bg-primary rounded-[20px] flex items-stretch overflow-hidden">
-                    <div className="grow py-8 sm:py-16 md:py-20 px-5 md:px-8 md:pl-28 ">
-                        <div className="h-full flex flex-col justify-center gap-3 text-white max-w-[515px]">
-                            <h2 className="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl">
-                                Subscribe to our newsletter
-                            </h2>
-                            <p className="text-lg">
-                                Receive latest news, update, and many other
-                                things every week.
-                            </p>
-                            <WaitListForm />
-                        </div>
-                    </div>
-                    <Image
-                        width={558}
-                        height={395}
-                        alt="waitlist-artwork"
-                        src="/wait-list-artwork.svg"
-                        className="hidden lg:inline-block"
-                    />
-                </div>
+                <WaitListSection />
             </div>
         </section>
     );
 }
-
-const WaitListForm = (): JSX.Element => {
-    return (
-        <form className="bg-white p-1.5 flex gap-5 rounded-lg justify-between">
-            <input
-                type="text"
-                placeholder="Your email here"
-                className="font-medium text-black text-sm sm:text-base md:text-lg placeholder:text-slate-800 placeholder:text-opacity-50 placegolder:font-light pl-2 md:pl-5 outline-none grow w-full"
-            />
-            <button className="bg-primary text-white text-sm sm:text-base md:text-lg whitespace-nowrap px-5 py-2 rounded hover:scale-105 transition-transform duration-300 ease-out">
-                Join Now
-            </button>
-        </form>
-    );
-};
