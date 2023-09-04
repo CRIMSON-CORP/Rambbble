@@ -2,13 +2,6 @@
 import { FC, SetStateAction, useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 
-import {
-    getFirestore,
-    addDoc,
-    collection,
-    serverTimestamp,
-} from 'firebase/firestore';
-
 import { AiOutlineUser } from 'react-icons/ai';
 import { RiMailOpenLine } from 'react-icons/ri';
 
@@ -24,23 +17,25 @@ import useModalContext from '@/hooks/useModalContext';
 
 import { AnimatePresence, Variants, motion } from 'framer-motion';
 import DynamicButton from '@/components/ui/DynamicButton';
-import { db, COLLECTION_NAMES, storeWaitlistData } from '@/service/firebase';
+import { storeWaitlistData } from '@/service/firebase';
 import delay from '@/utils/delay';
 
+import Loading from './loading';
+
 export default function Home() {
-    // const { state, close } = useToggle(true);
+    const { state, close } = useToggle(true);
 
-    // useEffect(() => {
-    //     const timeout = setTimeout(close, 5000);
+    useEffect(() => {
+        const timeout = setTimeout(close, 5000);
 
-    //     return () => {
-    //         clearTimeout(timeout);
-    //     };
-    // }, [close]);
+        return () => {
+            clearTimeout(timeout);
+        };
+    }, [close]);
 
-    // if (state) {
-    //     return <Loading />;
-    // }
+    if (state) {
+        return <Loading />;
+    }
 
     return (
         <main className="flex flex-col">
