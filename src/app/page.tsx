@@ -2,6 +2,13 @@
 import { FC, SetStateAction, useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 
+import {
+    getFirestore,
+    addDoc,
+    collection,
+    serverTimestamp,
+} from 'firebase/firestore';
+
 import { AiOutlineUser } from 'react-icons/ai';
 import { RiMailOpenLine } from 'react-icons/ri';
 
@@ -15,9 +22,10 @@ import Modal from '@/components/Modal';
 import useToggle from '@/hooks/useToggle';
 import useModalContext from '@/hooks/useModalContext';
 
-import Loading from './loading';
 import { AnimatePresence, Variants, motion } from 'framer-motion';
 import DynamicButton from '@/components/ui/DynamicButton';
+import { db, COLLECTION_NAMES, storeWaitlistData } from '@/service/firebase';
+import delay from '@/utils/delay';
 
 export default function Home() {
     // const { state, close } = useToggle(true);
@@ -553,9 +561,23 @@ function JoinWaitListScreen({
                 setButtonStatus('loading');
                 const formData = new FormData(e.target as HTMLFormElement);
 
-                const firstNameFormDataValue = formData
+                const firstNameFormDataValue: string | undefined = formData
                     .get('full-name')
                     ?.toString();
+                const emailFormDataValue: string | undefined = formData
+                    .get('email')
+                    ?.toString();
+
+                if (!firstNameFormDataValue || !emailFormDataValue) {
+                    alert('Please fill all inputs!');
+                    return;
+                }
+                await storeWaitlistData(
+                    firstNameFormDataValue,
+                    emailFormDataValue,
+                );
+                setButtonStatus('success');
+                await delay(1000);
                 const userFirstName = firstNameFormDataValue?.split(' ')[0];
                 setUserFirstName(userFirstName || '');
                 setCurrentScreen('in');
