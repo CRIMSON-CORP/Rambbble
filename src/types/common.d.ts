@@ -8,3 +8,5 @@ interface ModalContextValues {
     openModal: () => void;
     closeModal: () => void;
 }
+
+type ButtonStatus = 'idle' | 'loading' | 'success' | 'error';

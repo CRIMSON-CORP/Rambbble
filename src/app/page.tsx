@@ -17,6 +17,7 @@ import useModalContext from '@/hooks/useModalContext';
 
 import Loading from './loading';
 import { AnimatePresence, Variants, motion } from 'framer-motion';
+import DynamicButton from '@/components/ui/DynamicButton';
 
 export default function Home() {
     // const { state, close } = useToggle(true);
@@ -544,16 +545,23 @@ function JoinWaitListScreen({
     setCurrentScreen: React.Dispatch<SetStateAction<'join' | 'in'>>;
     setUserFirstName: React.Dispatch<SetStateAction<string>>;
 }) {
+    const [buttonStatus, setButtonStatus] = useState<ButtonStatus>('idle');
     const onSubmit: React.FormEventHandler = useCallback(
-        (e) => {
+        async (e) => {
             e.preventDefault();
-            setCurrentScreen('in');
-            const formData = new FormData(e.target as HTMLFormElement);
-            const firstNameFormDataValue = formData
-                .get('full-name')
-                ?.toString();
-            const userFirstName = firstNameFormDataValue?.split(' ')[0];
-            setUserFirstName(userFirstName || '');
+            try {
+                setButtonStatus('loading');
+                const formData = new FormData(e.target as HTMLFormElement);
+
+                const firstNameFormDataValue = formData
+                    .get('full-name')
+                    ?.toString();
+                const userFirstName = firstNameFormDataValue?.split(' ')[0];
+                setUserFirstName(userFirstName || '');
+                setCurrentScreen('in');
+            } catch (error) {
+                setButtonStatus('error');
+            }
         },
         [setCurrentScreen, setUserFirstName],
     );
@@ -604,9 +612,9 @@ function JoinWaitListScreen({
                         className="px-2.5 py-3 sm:py-5 placeholder:text-neutral-500 text-base sm:text-lg sm:font-medium leading-tight text-black grow rounded-r-[10px] w-full"
                     />
                 </div>
-                <Button type="submit">
-                    <span className="py-2 md:py-0 inline-block">Confirm</span>
-                </Button>
+                <DynamicButton type="submit" status={buttonStatus}>
+                    Confirm
+                </DynamicButton>
             </form>
         </article>
     );
@@ -626,7 +634,7 @@ function YoureInScreen({ userFirstName }: { userFirstName: string }) {
                 <h2 className="text-slate-600 text-2xl font-semibold leading-loose text-center">
                     You&apos;re In! 😁
                 </h2>
-                <p className='text-blue-950 text-opacity-70 text-base sm:text-xl font-normal leading-relaxed"'>
+                <p className='text-blue-950 text-opacity-70 text-base sm:text-xl text-center font-normal leading-relaxed"'>
                     We are happy to have you here, {userFirstName}. When we
                     lauch, we are going to send you an email containing the next
                     steps to take.
