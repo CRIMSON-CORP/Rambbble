@@ -53,7 +53,7 @@ export default Footer;
 
 function SocialMediaLinks() {
     return (
-        <div className="flex items-center gap-3 md:gap-7 self-end">
+        <div className="flex items-center gap-3 md:gap-7 self-end justify-between sm:justify-start w-full sm:w-auto">
             <Image
                 width={42}
                 height={42}

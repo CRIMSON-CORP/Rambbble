@@ -228,18 +228,16 @@ function Community() {
                             </SlideInContent>
                         </div>
                     </div>
-                    <SlideInContent
-                        y={0}
-                        x={200}
-                        className="grow w-full center"
-                    >
-                        <Image
-                            width={594}
-                            height={438}
-                            alt="online world artwork"
-                            src="/online-world-pana.svg"
-                        />
-                    </SlideInContent>
+                    <div className="overflow-x-hidden grow w-full ">
+                        <SlideInContent y={0} x={200} className="center">
+                            <Image
+                                width={594}
+                                height={438}
+                                alt="online world artwork"
+                                src="/online-world-pana.svg"
+                            />
+                        </SlideInContent>
+                    </div>
                 </div>
             </div>
         </section>
@@ -417,9 +415,9 @@ function Download() {
                                 notifications if you have been matched
                             </p>
                         </SlideInContent>
-                        <div className="flex items-center gap-8 flex-wrap">
+                        <div className="flex items-center gap-4 sm:gap-8 flex-wrap">
                             <SlideInContent>
-                                <button>
+                                <button className="w-2/3 sm:w-auto">
                                     <Image
                                         width={245}
                                         height={83}
@@ -429,7 +427,7 @@ function Download() {
                                 </button>
                             </SlideInContent>
                             <SlideInContent>
-                                <button>
+                                <button className="w-2/3 sm:w-auto">
                                     <Image
                                         width={273}
                                         height={82}
@@ -460,7 +458,10 @@ function Download() {
 
 function WaitList() {
     return (
-        <section id="waitlist" className="pt-80 md:pt-52 pb-24">
+        <section
+            id="waitlist"
+            className="pt-[clamp(100px,50vw,300px)] md:pt-40 pb-24 overflow-x-hidden"
+        >
             <div className="container">
                 <WaitListSection />
             </div>
