@@ -1,6 +1,9 @@
 'use client';
-import { FC, useEffect } from 'react';
+import { FC, SetStateAction, useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
+
+import { AiOutlineUser } from 'react-icons/ai';
+import { RiMailOpenLine } from 'react-icons/ri';
 
 import { Button } from '@/components/ui';
 import HeroAnimation from '@/components/HeroAnimation/HeroAnimation';
@@ -8,24 +11,27 @@ import AnimatedText from '@/components/AnimatedText';
 import SlideInContent from '@/components/SlideInContent';
 import ArticleContent from '@/components/ArticleContent';
 import WaitListSection from '@/components/WaitlistSection';
+import Modal from '@/components/Modal';
 import useToggle from '@/hooks/useToggle';
+import useModalContext from '@/hooks/useModalContext';
 
 import Loading from './loading';
+import { AnimatePresence, Variants, motion } from 'framer-motion';
 
 export default function Home() {
-    const { state, close } = useToggle(true);
+    // const { state, close } = useToggle(true);
 
-    useEffect(() => {
-        const timeout = setTimeout(close, 5000);
+    // useEffect(() => {
+    //     const timeout = setTimeout(close, 5000);
 
-        return () => {
-            clearTimeout(timeout);
-        };
-    }, [close]);
+    //     return () => {
+    //         clearTimeout(timeout);
+    //     };
+    // }, [close]);
 
-    if (state) {
-        return <Loading />;
-    }
+    // if (state) {
+    //     return <Loading />;
+    // }
 
     return (
         <main className="flex flex-col">
@@ -36,6 +42,7 @@ export default function Home() {
             <HowItWorks />
             <Download />
             <WaitList />
+            <ModalWrapepr />
         </main>
     );
 }
@@ -64,6 +71,7 @@ function Hero() {
 }
 
 function HeroContent() {
+    const { openModal } = useModalContext();
     return (
         <div className="sm:grow w-full">
             <div className="max-w-[573.49px] flex flex-col items-start gap-5 sm:gap-7 md:gap-10 xl:gap-16">
@@ -80,7 +88,9 @@ function HeroContent() {
                     </SlideInContent>
                 </div>
                 <SlideInContent delay={0.5}>
-                    <Button size="large">Find a trip buddy</Button>
+                    <Button size="large" onClick={openModal}>
+                        Find a trip buddy
+                    </Button>
                 </SlideInContent>
             </div>
         </div>
@@ -466,5 +476,162 @@ function WaitList() {
                 <WaitListSection />
             </div>
         </section>
+    );
+}
+
+const pageWrapperVariants: Variants = {
+    initial: {
+        opacity: 0,
+        x: '100%',
+    },
+    animate: {
+        opacity: 1,
+        x: '0%',
+        transition: {
+            duration: 0.5,
+        },
+    },
+    exit: {
+        opacity: 0,
+        x: '-100%',
+        transition: {
+            duration: 0.5,
+        },
+    },
+};
+
+function ModalWrapepr() {
+    const { modalOpen, closeModal } = useModalContext();
+    const [currentScreen, setCurrentScreen] = useState<'join' | 'in'>('join');
+    const [userFirstName, setUserFirstName] = useState('');
+    return (
+        <Modal open={modalOpen} closeModal={closeModal}>
+            <AnimatePresence mode="popLayout" initial={false}>
+                {currentScreen === 'join' && (
+                    <motion.div
+                        key="join"
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        variants={pageWrapperVariants}
+                    >
+                        <JoinWaitListScreen
+                            setCurrentScreen={setCurrentScreen}
+                            setUserFirstName={setUserFirstName}
+                        />
+                    </motion.div>
+                )}
+                {currentScreen === 'in' && (
+                    <motion.div
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        variants={pageWrapperVariants}
+                        key="in"
+                    >
+                        <YoureInScreen userFirstName={userFirstName} />
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </Modal>
+    );
+}
+
+function JoinWaitListScreen({
+    setCurrentScreen,
+    setUserFirstName,
+}: {
+    setCurrentScreen: React.Dispatch<SetStateAction<'join' | 'in'>>;
+    setUserFirstName: React.Dispatch<SetStateAction<string>>;
+}) {
+    const onSubmit: React.FormEventHandler = useCallback(
+        (e) => {
+            e.preventDefault();
+            setCurrentScreen('in');
+            const formData = new FormData(e.target as HTMLFormElement);
+            const firstNameFormDataValue = formData
+                .get('full-name')
+                ?.toString();
+            const userFirstName = firstNameFormDataValue?.split(' ')[0];
+            setUserFirstName(userFirstName || '');
+        },
+        [setCurrentScreen, setUserFirstName],
+    );
+    return (
+        <article className="relative flex flex-col gap-5 pt-32 sm:pt-72 isolate">
+            <Image
+                width={502}
+                height={510.49}
+                alt="join waitlist"
+                src="/join-waitlist.gif"
+                className="self-center absolute left-1/2 -translate-x-1/2 top-0 -z-10 -translate-y-24 w-full max-w-[502px]"
+            />
+            <h2 className="text-slate-600 text-2xl font-semibold leading-loose text-center">
+                Oops 👀
+            </h2>
+            <p className='text-blue-950 text-opacity-70 text-base md:text-lg font-normal leading-relaxed"'>
+                We are not launched yet but we will pretty soon. Please leave us
+                your name and email, and we will update you as soon as we
+                launch.
+            </p>
+            <p className="text-blue-950 text-opacity-70 text-sm sm:text-base font-light leading-relaxed italic">
+                ** We promise not to spam your email
+            </p>
+            <form onSubmit={onSubmit} className="flex flex-col gap-4">
+                <div className="rounded-[10px] border border-slate-500 border-opacity-25 flex items-center overflow-hidden pl-3.5">
+                    <AiOutlineUser
+                        size={24}
+                        className="text-primary-orange flex-none"
+                    />
+                    <input
+                        required
+                        placeholder="Enter your name"
+                        type="text"
+                        name="full-name"
+                        className="px-2.5 py-3 sm:py-5 placeholder:text-neutral-500 text-base sm:text-lg sm:font-medium leading-tight text-black grow rounded-r-[10px] w-full"
+                    />
+                </div>
+                <div className="rounded-[10px] border border-slate-500 border-opacity-25 flex items-center overflow-hidden pl-3.5">
+                    <RiMailOpenLine
+                        size={24}
+                        className="text-primary-orange  flex-none"
+                    />
+                    <input
+                        required
+                        type="email"
+                        name="email"
+                        placeholder=" Enter your email address"
+                        className="px-2.5 py-3 sm:py-5 placeholder:text-neutral-500 text-base sm:text-lg sm:font-medium leading-tight text-black grow rounded-r-[10px] w-full"
+                    />
+                </div>
+                <Button type="submit">
+                    <span className="py-2 md:py-0 inline-block">Confirm</span>
+                </Button>
+            </form>
+        </article>
+    );
+}
+
+function YoureInScreen({ userFirstName }: { userFirstName: string }) {
+    return (
+        <article className="relative flex flex-col gap-5 pb-16 md:pb-32">
+            <div className="flex flex-col">
+                <Image
+                    alt="youre in"
+                    width={402.29}
+                    height={402.29}
+                    src="/youre-in.gif"
+                    className="self-center w-full max-w-[502px]"
+                />
+                <h2 className="text-slate-600 text-2xl font-semibold leading-loose text-center">
+                    You&apos;re In! 😁
+                </h2>
+                <p className='text-blue-950 text-opacity-70 text-base sm:text-xl font-normal leading-relaxed"'>
+                    We are happy to have you here, {userFirstName}. When we
+                    lauch, we are going to send you an email containing the next
+                    steps to take.
+                </p>
+            </div>
+        </article>
     );
 }

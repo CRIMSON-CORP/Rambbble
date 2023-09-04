@@ -3,6 +3,7 @@ import React from 'react';
 import { RxHamburgerMenu } from 'react-icons/rx';
 
 import useToggle from '@/hooks/useToggle';
+import useModalContext from '@/hooks/useModalContext';
 
 import Logo from '../Logo';
 import { Button } from '../ui';
@@ -11,6 +12,7 @@ import MobileNav from './MobileNav';
 
 function Header() {
     const { state, open, close } = useToggle();
+    const { openModal } = useModalContext();
 
     return (
         <header className="py-5 absolute w-full top-0 left-0 right-0">
@@ -23,7 +25,9 @@ function Header() {
                             <Button variant="outlined" href="/login">
                                 Log In
                             </Button>
-                            <Button>Find a trip buddy</Button>
+                            <Button onClick={openModal}>
+                                Find a trip buddy
+                            </Button>
                         </div>
                     </div>
                     <button className="inline-block lg:hidden" onClick={open}>

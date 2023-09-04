@@ -3,10 +3,11 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Poppins, Raleway } from 'next/font/google';
 import Footer from '@/components/Footer';
+import ModalContextProvider from '@/context/modalContext';
 
 const poppins = Poppins({
     subsets: ['latin'],
-    style: 'normal',
+    style: ['normal', 'italic'],
     weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
     variable: '--font-poppins',
     display: 'swap',
@@ -42,9 +43,11 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={[poppins.variable, raleway.variable].join(' ')}>
-                <Header />
-                {children}
-                <Footer />
+                <ModalContextProvider>
+                    <Header />
+                    {children}
+                    <Footer />
+                </ModalContextProvider>
             </body>
         </html>
     );
