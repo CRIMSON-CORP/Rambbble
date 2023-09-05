@@ -28,6 +28,7 @@ const Modal: FC<ModalProps> = ({
         <AnimatePresence>
             {open && (
                 <motion.div
+                    id="modal"
                     key="modal"
                     exit="hidden"
                     animate="show"
@@ -47,16 +48,17 @@ const Modal: FC<ModalProps> = ({
                                 layout
                                 variants={makeModalContentVariants()}
                                 onClick={preventCloseOnOutSideClick}
-                                className="modal-content relative bg-white p-4 sm:p-9 rounded-3xl shadow-[0px 12px 124px rgba(37, 72, 153, 0.17)] overflow-x-hidden max-h[90vh] overflow-hidden"
+                                className="relative bg-white !pt-0 p-2 sm:p-5 rounded-3xl shadow-[0px 12px 124px rgba(37, 72, 153, 0.17)]"
                             >
                                 <motion.button
                                     layout
                                     onClick={closeModal}
-                                    className="absolute sm:top-10 sm:right-10 sm:w-10 sm:h-10 top-4 right-4 w-6 h-6 cursor-pointer z-10"
+                                    className="absolute sm:top-10 sm:right-10 sm:w-10 sm:h-10 top-4 right-4 w-6 h-6 cursor-pointer z-10 center"
                                 >
                                     <TfiClose className="text-primary-orange" />
                                 </motion.button>
                                 <motion.div
+                                    className="modal-content max-h-[85vh] overflow-y-auto p-2 sm:p-4"
                                     variants={modalContentInnerVariants}
                                 >
                                     {children}
