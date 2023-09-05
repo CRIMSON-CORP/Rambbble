@@ -67,7 +67,7 @@ function Hero() {
     return (
         <section id="hero" className="flex grow">
             <div>
-                <div className="container min-h-screen grow flex items-center sm:justify-between flex-col md:flex-row pt-28 md:pt-0 gap-10">
+                <div className="container min-h-screen grow flex items-center sm:justify-between flex-col md:flex-row py-28 md:py-24 gap-10">
                     <HeroContent />
                     <HeroAnimation />
                 </div>
@@ -91,13 +91,13 @@ function HeroContent() {
     return (
         <div className="sm:grow w-full">
             <div className="max-w-[573.49px] flex flex-col items-start gap-5 sm:gap-7 md:gap-10 xl:gap-16">
-                <div className="flex flex-col gap-4 sm:gap-6 md:gap-8 xl:gap-12">
+                <div className="flex flex-col gap-4 sm:gap-6 md:gap-8 2xl:gap-12">
                     <h1 className="opacity-80 text-dark-blue text-4xl sm:text-5xl md:text-6xl xl:text-[84px] font-bold">
                         <AnimatedText>Find your trip buddy!</AnimatedText>
                     </h1>
                     <SlideInContent delay={0.25}>
                         <div className="opacity-70 text-faint-dark-blue text-base sm:text-lg xl:text-2xl font-normal">
-                            Rambble connects people with the same passion -
+                            Rambbble connects people with the same passion -
                             traveling! Our goal is to help you find Travel
                             Buddies and Make New Friends
                         </div>
@@ -665,8 +665,8 @@ function YoureInScreen({ userFirstName }: { userFirstName: string }) {
                 </h2>
                 <p className='text-blue-950 text-opacity-70 text-base sm:text-xl text-center font-normal leading-relaxed"'>
                     We are happy to have you here, {userFirstName}. When we
-                    lauch, we are going to send you an email containing the next
-                    steps to take.
+                    launch, we are going to send you an email containing the
+                    next steps to take.
                 </p>
             </div>
         </article>
