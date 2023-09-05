@@ -175,6 +175,7 @@ const Service: FC<ServiceProps> = ({ imagePath, description }) => {
 };
 
 function WeveGotYou() {
+    const { openModal } = useModalContext();
     return (
         <section id="wevegotyou" className="pt-7">
             <div className="container flex flex-col gap-16">
@@ -212,7 +213,7 @@ function WeveGotYou() {
                                 </SlideInContent>
                             </div>
                             <SlideInContent>
-                                <Button variant="outlined">
+                                <Button onClick={openModal} variant="outlined">
                                     Find someone in your city
                                 </Button>
                             </SlideInContent>
@@ -225,6 +226,7 @@ function WeveGotYou() {
 }
 
 function Community() {
+    const { openModal } = useModalContext();
     return (
         <section id="join-community" className="pt-16 pb-8">
             <div className="container">
@@ -248,7 +250,7 @@ function Community() {
                                 </SlideInContent>
                             </div>
                             <SlideInContent>
-                                <Button variant="outlined">
+                                <Button onClick={openModal} variant="outlined">
                                     Join the community
                                 </Button>
                             </SlideInContent>
@@ -333,6 +335,7 @@ function HowItWorks() {
 }
 
 function Download() {
+    const { openModal } = useModalContext();
     return (
         <section id="download" className="bg-[#FC8B4E] isolate overflow-x-clip">
             <div className="container relative isolate h-full">
@@ -443,7 +446,10 @@ function Download() {
                         </SlideInContent>
                         <div className="flex items-center gap-4 sm:gap-8 flex-wrap">
                             <SlideInContent>
-                                <button className="w-2/3 sm:w-auto">
+                                <button
+                                    onClick={openModal}
+                                    className="w-2/3 sm:w-auto"
+                                >
                                     <Image
                                         width={245}
                                         height={83}
@@ -453,7 +459,10 @@ function Download() {
                                 </button>
                             </SlideInContent>
                             <SlideInContent>
-                                <button className="w-2/3 sm:w-auto">
+                                <button
+                                    onClick={openModal}
+                                    className="w-2/3 sm:w-auto"
+                                >
                                     <Image
                                         width={273}
                                         height={82}

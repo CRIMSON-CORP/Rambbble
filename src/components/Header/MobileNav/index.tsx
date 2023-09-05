@@ -1,8 +1,11 @@
 'use client';
-import { Button } from '@/components/ui';
 import { Variants, motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+
 import { TfiClose } from 'react-icons/tfi';
+
+import { Button } from '@/components/ui';
+import useModalContext from '@/hooks/useModalContext';
 
 const underlayVariants: Variants = {
     initial: {
@@ -67,6 +70,7 @@ interface MobileNavProps {
 }
 
 function MobileNav({ state, close }: MobileNavProps): JSX.Element {
+    const { openModal } = useModalContext();
     return (
         <AnimatePresence>
             {state && (
@@ -122,7 +126,7 @@ function MobileNav({ state, close }: MobileNavProps): JSX.Element {
                         <motion.li custom={5} variants={listItemVaraints}>
                             <div>
                                 <Button
-                                    href="/login"
+                                    onClick={openModal}
                                     size="large"
                                     variant="outlined"
                                 >
@@ -131,7 +135,9 @@ function MobileNav({ state, close }: MobileNavProps): JSX.Element {
                             </div>
                         </motion.li>
                         <motion.li custom={6} variants={listItemVaraints}>
-                            <Button size="large">Find a trip buddy</Button>
+                            <Button onClick={openModal} size="large">
+                                Find a trip buddy
+                            </Button>
                         </motion.li>
                     </motion.ul>
                 </nav>

@@ -22,7 +22,7 @@ function Header() {
                     <div className="hidden lg:contents">
                         <NavLinks />
                         <div className="flex items-center gap-10">
-                            <Button variant="outlined" href="/login">
+                            <Button variant="outlined" onClick={openModal}>
                                 Log In
                             </Button>
                             <Button onClick={openModal}>
