@@ -23,6 +23,7 @@ const config: Config = {
             },
             zIndex: {
                 'side-bar': '99',
+                modal: '100',
             },
             container: {
                 center: true,
