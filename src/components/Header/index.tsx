@@ -15,7 +15,7 @@ function Header() {
     const { openModal } = useModalContext();
 
     return (
-        <header className="py-5 absolute w-full top-0 left-0 right-0">
+        <header className="py-5 fixed w-full top-0 left-0 right-0 backdrop-blur z-10">
             <div className="container">
                 <div className="flex items-center justify-between">
                     <Logo />

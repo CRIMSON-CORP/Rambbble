@@ -76,7 +76,7 @@ function MobileNav({ state, close }: MobileNavProps): JSX.Element {
             {state && (
                 <nav
                     id="mobile_menu"
-                    className="fixed inset-0 z-side-bar isolate overflow-hidden block xl:hidden"
+                    className="fixed w-screen h-screen inset-0 z-side-bar isolate overflow-hidden block xl:hidden"
                 >
                     <motion.div
                         onClick={close}
