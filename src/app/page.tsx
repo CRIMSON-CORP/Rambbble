@@ -26,10 +26,22 @@ export default function Home() {
     const { state, close } = useToggle(true);
 
     useEffect(() => {
-        const timeout = setTimeout(close, 5000);
+        const handleLoad = () => {
+            console.log(document.readyState, 'handle');
+
+            if (document.readyState === 'complete') {
+                close();
+            }
+        };
+
+        if (document.readyState === 'complete') {
+            close();
+        } else {
+            document.addEventListener('readystatechange', handleLoad);
+        }
 
         return () => {
-            clearTimeout(timeout);
+            document.removeEventListener('readystatechange', handleLoad);
         };
     }, [close]);
 
