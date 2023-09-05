@@ -1,8 +1,11 @@
 'use client';
 import Image from 'next/image';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Variants, motion } from 'framer-motion';
 import { inViewPropsSome } from '@/utils/framer-motion-variants';
+import DynamicButton from '../ui/DynamicButton';
+import { storeNewsLetterEmail } from '@/service/firebase';
+import useButtonStatus from '@/hooks/useButtonStatus';
 
 const sectionVariants: Variants = {
     hidden: {
@@ -56,7 +59,7 @@ const slideLeft: Variants = {
     },
 };
 
-function WaitListSection() {
+function NewsLetterSection() {
     return (
         <motion.div
             initial="hidden"
@@ -81,7 +84,7 @@ function WaitListSection() {
                         week.
                     </motion.p>
                     <motion.div variants={slideUp}>
-                        <WaitListForm />
+                        <NewsLetterForm />
                     </motion.div>
                 </motion.div>
             </motion.div>
@@ -91,26 +94,58 @@ function WaitListSection() {
                     height={395}
                     alt="waitlist-artwork"
                     src="/wait-list-artwork.svg"
-                    className="hidden lg:inline-block"
+                    className="hidden lg:inline-block h-full"
                 />
             </motion.div>
         </motion.div>
     );
 }
 
-export default WaitListSection;
+export default NewsLetterSection;
 
-const WaitListForm = (): JSX.Element => {
+const NewsLetterForm = (): JSX.Element => {
+    const { status, loading, success, error } = useButtonStatus();
+    const onSubmit: React.FormEventHandler = useCallback(
+        async (e) => {
+            e.preventDefault();
+            try {
+                loading();
+                const formData = new FormData(e.target as HTMLFormElement);
+
+                const email: string | undefined = formData
+                    .get('email')
+                    ?.toString();
+
+                if (!email) {
+                    alert('Please fill all inputs!');
+                    return;
+                }
+                await storeNewsLetterEmail(email);
+                success();
+            } catch (err: any) {
+                error();
+                alert(`Failed to submit email ${err.message}`);
+            }
+        },
+        [error, loading, success],
+    );
+
     return (
-        <form className="bg-white p-1.5 flex gap-5 rounded-lg justify-between">
+        <form
+            onSubmit={onSubmit}
+            className="bg-white p-1.5 flex gap-5 rounded-lg justify-between"
+        >
             <input
-                type="text"
+                type="email"
+                name="email"
                 placeholder="Your email here"
-                className="font-medium text-black text-sm sm:text-base md:text-lg placeholder:text-slate-800 placeholder:text-opacity-50 placegolder:font-light pl-2 md:pl-5 outline-none grow w-full"
+                className="font-medium text-black text-sm sm:text-base md:text-lg placeholder:text-slate-800 placeholder:text-opacity-50 placegolder:font-light pl-2 md:pl-5 grow w-full"
             />
-            <button className="bg-primary text-white text-sm sm:text-base md:text-lg whitespace-nowrap px-5 py-2 rounded hover:scale-105 transition-transform duration-300 ease-out">
-                Join Now
-            </button>
+            <DynamicButton type="submit" status={status}>
+                <span className="text-sm sm:text-base md:text-lg whitespace-nowrap px-5">
+                    Join Now
+                </span>
+            </DynamicButton>
         </form>
     );
 };

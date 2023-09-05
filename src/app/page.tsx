@@ -1,6 +1,7 @@
 'use client';
 import { FC, SetStateAction, useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
+import { AnimatePresence, Variants, motion } from 'framer-motion';
 
 import { AiOutlineUser } from 'react-icons/ai';
 import { RiMailOpenLine } from 'react-icons/ri';
@@ -10,12 +11,10 @@ import HeroAnimation from '@/components/HeroAnimation/HeroAnimation';
 import AnimatedText from '@/components/AnimatedText';
 import SlideInContent from '@/components/SlideInContent';
 import ArticleContent from '@/components/ArticleContent';
-import WaitListSection from '@/components/WaitlistSection';
+import NewsLetterSection from '@/components/NewsLetterSection';
 import Modal from '@/components/Modal';
 import useToggle from '@/hooks/useToggle';
 import useModalContext from '@/hooks/useModalContext';
-
-import { AnimatePresence, Variants, motion } from 'framer-motion';
 import DynamicButton from '@/components/ui/DynamicButton';
 import { storeWaitlistData } from '@/service/firebase';
 import delay from '@/utils/delay';
@@ -57,7 +56,7 @@ export default function Home() {
             <Community />
             <HowItWorks />
             <Download />
-            <WaitList />
+            <NewsLetter />
             <ModalWrapepr />
         </main>
     );
@@ -491,14 +490,14 @@ function Download() {
     );
 }
 
-function WaitList() {
+function NewsLetter() {
     return (
         <section
             id="waitlist"
             className="pt-[clamp(100px,50vw,300px)] md:pt-40 pb-24 overflow-x-hidden"
         >
             <div className="container">
-                <WaitListSection />
+                <NewsLetterSection />
             </div>
         </section>
     );

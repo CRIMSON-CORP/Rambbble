@@ -33,13 +33,31 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
 export const COLLECTION_NAMES = {
-    WAITLIST: 'wait-list',
+    WAITLIST: 'wait-list-emails',
+    NEWSLETTER: 'news-letter-emails',
 };
+
+const waitlistCollectionReference = collection(db, COLLECTION_NAMES.WAITLIST);
+const newsletterCollectionReference = collection(
+    db,
+    COLLECTION_NAMES.NEWSLETTER,
+);
 
 export async function storeWaitlistData(full_name: string, email: string) {
     try {
-        await addDoc(collection(db, COLLECTION_NAMES.WAITLIST), {
+        await addDoc(waitlistCollectionReference, {
             full_name,
+            email,
+            created_at: serverTimestamp(),
+        });
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function storeNewsLetterEmail(email: string) {
+    try {
+        await addDoc(newsletterCollectionReference, {
             email,
             created_at: serverTimestamp(),
         });
