@@ -122,3 +122,15 @@ export const inViewPropsSome: { amount: 'some'; once: boolean } = {
     amount: 'some',
     once: true,
 };
+
+export const pageLoaderVariants: Variants = {
+    initial: {
+        opacity: 0,
+    },
+    animate: {
+        opacity: 1,
+        transition: {
+            duration: 0.8,
+        },
+    },
+};

@@ -1,8 +1,20 @@
-function loading() {
+'use client';
+
+import usePageLoaded from '@/hooks/usePageLoaded';
+import useToggle from '@/hooks/useToggle';
+
+function Loading() {
+    const { state, close } = useToggle(true);
+    usePageLoaded({ onPageLaoded: close });
+
     return (
         <aside
             id="page-loader"
-            className="fixed inset-0 w-full h-full bg-white z-50 center"
+            className={`fixed inset-0 w-full h-full bg-white z-50 center transition duration-1000  ${
+                state
+                    ? 'translate-y-0 pointer-events-auto'
+                    : '-translate-y-full pointer-events-none'
+            }`}
         >
             <div className="pulse absolute">
                 <Pulse />
@@ -14,7 +26,7 @@ function loading() {
     );
 }
 
-export default loading;
+export default Loading;
 
 function Logo() {
     return (

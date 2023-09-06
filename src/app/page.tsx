@@ -1,5 +1,5 @@
 'use client';
-import { FC, SetStateAction, useCallback, useEffect, useState } from 'react';
+import { FC, SetStateAction, useCallback, useState } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, Variants, motion } from 'framer-motion';
 
@@ -18,47 +18,26 @@ import useModalContext from '@/hooks/useModalContext';
 import DynamicButton from '@/components/ui/DynamicButton';
 import { storeWaitlistData } from '@/service/firebase';
 import delay from '@/utils/delay';
+import { pageLoaderVariants } from '@/utils/framer-motion-variants';
 
 import Loading from './loading';
+import usePageLoaded from '@/hooks/usePageLoaded';
 
 export default function Home() {
-    const { state, close } = useToggle(true);
-
-    useEffect(() => {
-        const handleLoad = () => {
-            console.log(document.readyState, 'handle');
-
-            if (document.readyState === 'complete') {
-                close();
-            }
-        };
-
-        if (document.readyState === 'complete') {
-            close();
-        } else {
-            document.addEventListener('readystatechange', handleLoad);
-        }
-
-        return () => {
-            document.removeEventListener('readystatechange', handleLoad);
-        };
-    }, [close]);
-
-    if (state) {
-        return <Loading />;
-    }
-
     return (
-        <main className="flex flex-col">
-            <Hero />
-            <Services />
-            <WeveGotYou />
-            <Community />
-            <HowItWorks />
-            <Download />
-            <NewsLetter />
-            <ModalWrapepr />
-        </main>
+        <>
+            <main className="flex flex-col">
+                <Hero />
+                <Services />
+                <WeveGotYou />
+                <Community />
+                <HowItWorks />
+                <Download />
+                <NewsLetter />
+                <ModalWrapepr />
+            </main>
+            <Loading />
+        </>
     );
 }
 

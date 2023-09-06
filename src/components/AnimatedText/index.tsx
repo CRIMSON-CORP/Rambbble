@@ -12,6 +12,7 @@ const wrapperVariants: Variants = {
     animate: {
         transition: {
             staggerChildren: 0.125 / 2,
+            delayChildren: 0.25,
         },
     },
 };
@@ -30,7 +31,7 @@ const slideUpVariant: Variants = {
     },
 };
 
-const overflowAdjust = { overflowClipMargin: '0.75rem' };
+const overflowAdjust = { overflowClipMargin: '0.65rem' };
 
 const AnimatedText: FC<AnimatedTextProps> = ({ children }) => {
     const words = useMemo(
