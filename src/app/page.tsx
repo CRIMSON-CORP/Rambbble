@@ -1,27 +1,24 @@
 'use client';
-import { FC, SetStateAction, useCallback, useState } from 'react';
-import Image from 'next/image';
 import { AnimatePresence, Variants, motion } from 'framer-motion';
+import Image from 'next/image';
+import { FC, SetStateAction, useCallback, useState } from 'react';
 
 import { AiOutlineUser } from 'react-icons/ai';
 import { RiMailOpenLine } from 'react-icons/ri';
 
-import { Button } from '@/components/ui';
-import HeroAnimation from '@/components/HeroAnimation/HeroAnimation';
 import AnimatedText from '@/components/AnimatedText';
-import SlideInContent from '@/components/SlideInContent';
 import ArticleContent from '@/components/ArticleContent';
-import NewsLetterSection from '@/components/NewsLetterSection';
+import HeroAnimation from '@/components/HeroAnimation/HeroAnimation';
 import Modal from '@/components/Modal';
-import useToggle from '@/hooks/useToggle';
-import useModalContext from '@/hooks/useModalContext';
+import NewsLetterSection from '@/components/NewsLetterSection';
+import SlideInContent from '@/components/SlideInContent';
+import { Button } from '@/components/ui';
 import DynamicButton from '@/components/ui/DynamicButton';
+import useModalContext from '@/hooks/useModalContext';
 import { storeWaitlistData } from '@/service/firebase';
 import delay from '@/utils/delay';
-import { pageLoaderVariants } from '@/utils/framer-motion-variants';
 
 import Loading from './loading';
-import usePageLoaded from '@/hooks/usePageLoaded';
 
 export default function Home() {
     return (
@@ -71,7 +68,9 @@ function HeroContent() {
             <div className="max-w-[573.49px] flex flex-col items-start gap-5 sm:gap-7 md:gap-10 xl:gap-16">
                 <div className="flex flex-col gap-4 sm:gap-6 md:gap-8 2xl:gap-12">
                     <h1 className="opacity-80 text-dark-blue text-4xl sm:text-5xl md:text-6xl xl:text-[84px] font-bold">
-                        <AnimatedText>Find your trip buddy!</AnimatedText>
+                        <AnimatedText>
+                            Find your trip buddy! A massive change
+                        </AnimatedText>
                     </h1>
                     <SlideInContent delay={0.25}>
                         <div className="opacity-70 text-faint-dark-blue text-base sm:text-lg xl:text-2xl font-normal">

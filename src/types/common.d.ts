@@ -10,3 +10,5 @@ interface ModalContextValues {
 }
 
 type ButtonStatus = 'idle' | 'loading' | 'success' | 'error';
+
+declare module 'cypress-plugin-snapshots/plugin';

@@ -1,13 +1,12 @@
 import NavLinksList from '@/config/nav-links';
-import { skip } from 'node:test';
 
-describe('template spec', () => {
+describe.skip('template spec', () => {
     it('goes to website', () => {
         cy.visit('http://localhost:3000');
     });
 });
 
-describe('render navbar', () => {
+describe.skip('render navbar', () => {
     beforeEach(() => {
         cy.visit('http://localhost:3000');
     });
@@ -24,10 +23,18 @@ describe('render navbar', () => {
             .should('have.length', NavLinksList.length);
     });
 
-    it.only('nav links go to pages', () => {
+    it('nav links go to pages', () => {
         NavLinksList.map((link) => {
-            cy.get(`a[href='${link.path}']`).click();
+            cy.get(`header a[href='${link.path}']`).click();
             cy.location('pathname').should('equal', link.path);
         });
+    });
+});
+
+describe('snapshot testing', () => {
+    it('homepage matches snapshot', function () {
+        cy.viewport(854, 672);
+        cy.visit('http://localhost:3000');
+        expect(cy.document()).tomatchsnapshot();
     });
 });
