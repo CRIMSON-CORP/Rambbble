@@ -1,7 +1,7 @@
 'use client';
-import React, { FC, ReactNode, useMemo } from 'react';
-import { Variants, motion } from 'framer-motion';
 import { inViewPropsSome } from '@/utils/framer-motion-variants';
+import { Variants, m } from 'framer-motion';
+import { FC, ReactNode, useMemo } from 'react';
 
 interface SlideUpContentProps {
     children: ReactNode;
@@ -41,7 +41,7 @@ const SlideInContent: FC<SlideUpContentProps> = ({
     );
 
     return (
-        <motion.div
+        <m.div
             initial="hidden"
             whileInView="animate"
             className={className}
@@ -49,7 +49,7 @@ const SlideInContent: FC<SlideUpContentProps> = ({
             viewport={inViewPropsSome}
         >
             {children}
-        </motion.div>
+        </m.div>
     );
 };
 

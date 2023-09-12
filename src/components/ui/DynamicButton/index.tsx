@@ -1,5 +1,5 @@
 import type React from 'react';
-import { AnimatePresence, Variants, motion } from 'framer-motion';
+import { AnimatePresence, Variants, m } from 'framer-motion';
 import Image from 'next/image';
 
 import { MdClose, MdCheck } from 'react-icons/md';
@@ -77,13 +77,13 @@ const DynamicButton: React.FC<ButtonProps> = ({
         status !== 'idle' ? 'pointer-events-none' : 'pointer-events-auto';
 
     return (
-        <motion.button
+        <m.button
             type={type}
             onClick={onClick}
             className={`${btnPointerEvents} ${className}`}
         >
             <AnimatePresence initial={false}>
-                <motion.div
+                <m.div
                     key="idle"
                     initial="idleInitial"
                     variants={buttonVariants}
@@ -91,9 +91,9 @@ const DynamicButton: React.FC<ButtonProps> = ({
                     animate={status === 'idle' ? 'idleInitial' : 'idleAnimate'}
                 >
                     {children}
-                </motion.div>
+                </m.div>
                 {status === 'loading' && (
-                    <motion.div
+                    <m.div
                         key="spiner"
                         exit="exit"
                         initial="initial"
@@ -108,15 +108,15 @@ const DynamicButton: React.FC<ButtonProps> = ({
                             alt="loader spinner"
                             className="w-6 h-6 sm:w-9 sm:h-9"
                         />
-                    </motion.div>
+                    </m.div>
                 )}
                 {status === 'error' && (
-                    <motion.div
+                    <m.div
                         className="absolute flex items-center gap-2.5"
                         key="error"
                         {...AnimationObject}
                     >
-                        <motion.div
+                        <m.div
                             exit="exit"
                             initial="initial"
                             animate="animate"
@@ -126,16 +126,16 @@ const DynamicButton: React.FC<ButtonProps> = ({
                                 size={24}
                                 className="text-red-700 w-6 h-6 sm:w-9 sm:h-9"
                             />
-                        </motion.div>
-                    </motion.div>
+                        </m.div>
+                    </m.div>
                 )}
                 {status === 'success' && (
-                    <motion.div
+                    <m.div
                         className="absolute flex items-center gap-2.5"
                         key="error"
                         {...AnimationObject}
                     >
-                        <motion.div
+                        <m.div
                             exit="exit"
                             initial="initial"
                             animate="animate"
@@ -145,11 +145,11 @@ const DynamicButton: React.FC<ButtonProps> = ({
                                 size={24}
                                 className="text-white w-6 h-6 sm:w-9 sm:h-9"
                             />
-                        </motion.div>
-                    </motion.div>
+                        </m.div>
+                    </m.div>
                 )}
             </AnimatePresence>
-        </motion.button>
+        </m.button>
     );
 };
 

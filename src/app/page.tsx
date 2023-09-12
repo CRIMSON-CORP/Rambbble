@@ -1,5 +1,11 @@
 'use client';
-import { AnimatePresence, Variants, motion } from 'framer-motion';
+import {
+    AnimatePresence,
+    LazyMotion,
+    Variants,
+    domAnimation,
+    m,
+} from 'framer-motion';
 import Image from 'next/image';
 import { FC, SetStateAction, useCallback, useState } from 'react';
 
@@ -22,7 +28,7 @@ import Loading from './loading';
 
 export default function Home() {
     return (
-        <>
+        <LazyMotion features={domAnimation}>
             <main className="flex flex-col">
                 <Hero />
                 <Services />
@@ -34,7 +40,7 @@ export default function Home() {
                 <ModalWrapepr />
             </main>
             <Loading />
-        </>
+        </LazyMotion>
     );
 }
 
@@ -490,7 +496,10 @@ const pageWrapperVariants: Variants = {
         opacity: 1,
         x: '0%',
         transition: {
-            duration: 0.5,
+            duration: 1.25,
+            delay: 0.5,
+            type: 'tween',
+            ease: [0.17, 0.67, 0.16, 0.99],
         },
     },
     exit: {
@@ -510,7 +519,7 @@ function ModalWrapepr() {
         <Modal open={modalOpen} closeModal={closeModal}>
             <AnimatePresence mode="popLayout" initial={false}>
                 {currentScreen === 'join' && (
-                    <motion.div
+                    <m.div
                         key="join"
                         initial="initial"
                         animate="animate"
@@ -521,10 +530,10 @@ function ModalWrapepr() {
                             setCurrentScreen={setCurrentScreen}
                             setUserFirstName={setUserFirstName}
                         />
-                    </motion.div>
+                    </m.div>
                 )}
                 {currentScreen === 'in' && (
-                    <motion.div
+                    <m.div
                         initial="initial"
                         animate="animate"
                         exit="exit"
@@ -532,7 +541,7 @@ function ModalWrapepr() {
                         key="in"
                     >
                         <YoureInScreen userFirstName={userFirstName} />
-                    </motion.div>
+                    </m.div>
                 )}
             </AnimatePresence>
         </Modal>

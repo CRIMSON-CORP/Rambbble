@@ -1,6 +1,6 @@
 'use client';
-import { Variants, motion } from 'framer-motion';
-import React, { FC, memo, useMemo } from 'react';
+import { Variants, m } from 'framer-motion';
+import { FC, memo, useMemo } from 'react';
 
 import { inViewPropsAll } from '@/utils/framer-motion-variants';
 
@@ -42,19 +42,19 @@ const AnimatedText: FC<AnimatedTextProps> = ({ children }) => {
                     key={character + index}
                     className="overflow-clip inline-block"
                 >
-                    <motion.div
+                    <m.div
                         variants={slideUpVariant}
                         className="translate-y-full inline-block"
                     >
                         {character}
-                    </motion.div>
+                    </m.div>
                     {index !== array.length - 1 && '\u00A0'}
                 </div>
             )),
         [children],
     );
     return (
-        <motion.div
+        <m.div
             className=""
             initial="hidden"
             whileInView="animate"
@@ -62,7 +62,7 @@ const AnimatedText: FC<AnimatedTextProps> = ({ children }) => {
             variants={wrapperVariants}
         >
             {words}
-        </motion.div>
+        </m.div>
     );
 };
 

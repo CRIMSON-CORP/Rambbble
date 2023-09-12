@@ -2,7 +2,7 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import React, { FC } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 interface NavLinkProps {
     /** the url the link will link to */
@@ -27,7 +27,7 @@ const NavLink: FC<NavLinkProps> = ({ path, title }) => {
                 {title}
             </Link>
             {isActive && (
-                <motion.span
+                <m.span
                     layout
                     layoutId="underline"
                     className="absolute left-0 bottom-0 h-0.5 w-full bg-primary-orange"

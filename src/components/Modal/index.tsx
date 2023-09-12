@@ -1,7 +1,7 @@
-import { useCallback } from 'react';
-import type { FC, ReactNode } from 'react';
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
+import { AnimatePresence, LayoutGroup, m } from 'framer-motion';
+import type { FC, ReactNode } from 'react';
+import { useCallback } from 'react';
 import { TfiClose } from 'react-icons/tfi';
 
 interface ModalProps {
@@ -27,7 +27,7 @@ const Modal: FC<ModalProps> = ({
     return (
         <AnimatePresence>
             {open && (
-                <motion.div
+                <m.div
                     id="modal"
                     key="modal"
                     exit="hidden"
@@ -37,36 +37,36 @@ const Modal: FC<ModalProps> = ({
                     variants={modalWrapperVariants}
                     className={`fixed inset-0 grid place-items-center w-full h-full p-4 sm:p-6 isolate z-modal bg-[#DBD9D9] bg-opacity-70 backdrop-blur-[6px] pointer-events-auto} ${wrapperClassNames}`}
                 >
-                    <motion.div className="relative w-full max-w-[695px] pointer-events-auto">
+                    <m.div className="relative w-full max-w-[695px] pointer-events-auto">
                         <LayoutGroup>
-                            <motion.div
+                            <m.div
                                 layout
                                 variants={makeModalContentVariants(5, 0.1)}
                                 className="absolute inset-0 w-full h-full border-2 border-primary-orange rounded-3xl -z-10 pointer-events-none;"
                             />
-                            <motion.div
+                            <m.div
                                 layout
                                 variants={makeModalContentVariants()}
                                 onClick={preventCloseOnOutSideClick}
                                 className="relative bg-white !pt-0 p-2 sm:p-5 rounded-3xl shadow-[0px 12px 124px rgba(37, 72, 153, 0.17)]"
                             >
-                                <motion.button
+                                <m.button
                                     layout
                                     onClick={closeModal}
                                     className="absolute sm:top-10 sm:right-10 sm:w-10 sm:h-10 top-4 right-4 w-6 h-6 cursor-pointer z-10 center"
                                 >
                                     <TfiClose className="text-primary-orange" />
-                                </motion.button>
-                                <motion.div
-                                    className="modal-content max-h-[85vh] overflow-y-auto p-2 sm:p-4"
+                                </m.button>
+                                <m.div
+                                    className="modal-content max-h-[85vh] overflow-y-auto overflow-x-hidden sm:p-4"
                                     variants={modalContentInnerVariants}
                                 >
-                                    {children}
-                                </motion.div>
-                            </motion.div>
+                                    <div className="p-3 py-4">{children}</div>
+                                </m.div>
+                            </m.div>
                         </LayoutGroup>
-                    </motion.div>
-                </motion.div>
+                    </m.div>
+                </m.div>
             )}
         </AnimatePresence>
     );

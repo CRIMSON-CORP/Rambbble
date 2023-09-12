@@ -1,7 +1,7 @@
 'use client';
-import React, { FC } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Image from 'next/image';
+import { FC } from 'react';
 
 import {
     articleContent,
@@ -39,40 +39,40 @@ const ArticleContent: FC<ArticleContentProps> = ({
     className,
 }) => {
     return (
-        <motion.article
+        <m.article
             variants={articleContentWRapper}
             initial="hidden"
             whileInView="animate"
             viewport={inViewPropsAll}
             className={`flex flex-col items-center gap-2 md:gap-4 max-w-[330px] ${className}`}
         >
-            <motion.div variants={articleContent}>
+            <m.div variants={articleContent}>
                 <Image
                     width={width}
                     height={height}
                     src={imagePath}
                     alt={imageAlt}
                 />
-            </motion.div>
-            <motion.div
+            </m.div>
+            <m.div
                 variants={articleContent}
                 className="text-white text-xl font-semibold center bg-primary-orange aspect-square w-9 rounded-full outline outline-primary-orange/20 outline-2 outline-offset-4"
             >
                 {index}
-            </motion.div>
-            <motion.h3
+            </m.div>
+            <m.h3
                 variants={articleContent}
                 className="text-primary-orange text-xl md:text-2xl lg:text-[28px] font-semibold font-body"
             >
                 {title}
-            </motion.h3>
-            <motion.p
+            </m.h3>
+            <m.p
                 variants={articleContent}
                 className="opacity-70 text-center text-dark-blue sm:text-base md:text-lg lg:text-xl font-medium"
             >
                 {description}
-            </motion.p>
-        </motion.article>
+            </m.p>
+        </m.article>
     );
 };
 

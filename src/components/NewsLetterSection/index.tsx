@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import React, { useCallback } from 'react';
-import { Variants, motion } from 'framer-motion';
+import { Variants, m } from 'framer-motion';
 import { inViewPropsSome } from '@/utils/framer-motion-variants';
 import DynamicButton from '../ui/DynamicButton';
 import { storeNewsLetterEmail } from '@/service/firebase';
@@ -61,34 +61,34 @@ const slideLeft: Variants = {
 
 function NewsLetterSection() {
     return (
-        <motion.div
+        <m.div
             initial="hidden"
             whileInView="animate"
             viewport={inViewPropsSome}
             variants={sectionVariants}
             className="bg-primary rounded-[20px] flex items-stretch overflow-hidden"
         >
-            <motion.div className="grow py-8 sm:py-16 md:py-20 px-5 md:px-8 md:pl-28 ">
-                <motion.div
+            <m.div className="grow py-8 sm:py-16 md:py-20 px-5 md:px-8 md:pl-28 ">
+                <m.div
                     variants={contentVariants}
                     className="h-full flex flex-col justify-center gap-3 text-white max-w-[515px]"
                 >
-                    <motion.h2
+                    <m.h2
                         variants={slideUp}
                         className="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl"
                     >
                         Subscribe to our newsletter
-                    </motion.h2>
-                    <motion.p variants={slideUp} className="text-lg">
+                    </m.h2>
+                    <m.p variants={slideUp} className="text-lg">
                         Receive latest news, update, and many other things every
                         week.
-                    </motion.p>
-                    <motion.div variants={slideUp}>
+                    </m.p>
+                    <m.div variants={slideUp}>
                         <NewsLetterForm />
-                    </motion.div>
-                </motion.div>
-            </motion.div>
-            <motion.div variants={slideLeft}>
+                    </m.div>
+                </m.div>
+            </m.div>
+            <m.div variants={slideLeft}>
                 <Image
                     width={558}
                     height={395}
@@ -96,8 +96,8 @@ function NewsLetterSection() {
                     src="/wait-list-artwork.svg"
                     className="hidden lg:inline-block h-full"
                 />
-            </motion.div>
-        </motion.div>
+            </m.div>
+        </m.div>
     );
 }
 

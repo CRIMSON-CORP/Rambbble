@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import Lottie from 'lottie-web';
-import { Variants, motion } from 'framer-motion';
 import { inViewPropsSome } from '@/utils/framer-motion-variants';
+import { Variants, m } from 'framer-motion';
+import Lottie from 'lottie-web';
+import { useEffect, useRef } from 'react';
 
 const heroAnimationVariants: Variants = {
     hidden: {
@@ -38,14 +38,14 @@ function HeroAnimation() {
         }
     }, []);
     return (
-        <motion.div
+        <m.div
             initial="hidden"
             whileInView="rotateIn"
             ref={animationContainer}
             viewport={inViewPropsSome}
             className="sm:grow w-full"
             variants={heroAnimationVariants}
-        ></motion.div>
+        ></m.div>
     );
 }
 
