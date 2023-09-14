@@ -1,8 +1,8 @@
-import type React from 'react';
 import { AnimatePresence, Variants, motion } from 'framer-motion';
 import Image from 'next/image';
+import type React from 'react';
 
-import { MdClose, MdCheck } from 'react-icons/md';
+import { MdCheck, MdClose } from 'react-icons/md';
 
 interface ButtonProps {
     /** type of the button */
@@ -13,6 +13,7 @@ interface ButtonProps {
     onClick?: React.MouseEventHandler | React.FormEventHandler;
     /** determines the side of the font size of the button */
     size?: 'normal' | 'large';
+    /** Status of the button, this determines whether to show spinner, success, error, or the norma button text */
     status?: ButtonStatus;
 }
 
@@ -85,6 +86,7 @@ const DynamicButton: React.FC<ButtonProps> = ({
             <AnimatePresence initial={false}>
                 <motion.div
                     key="idle"
+                    data-testid="idle"
                     initial="idleInitial"
                     variants={buttonVariants}
                     className="flex items-center justify-center gap-2.5"
@@ -106,6 +108,7 @@ const DynamicButton: React.FC<ButtonProps> = ({
                             height={24}
                             src="/spinner.svg"
                             alt="loader spinner"
+                            data-testid="spinner"
                             className="w-6 h-6 sm:w-9 sm:h-9"
                         />
                     </motion.div>
@@ -124,7 +127,8 @@ const DynamicButton: React.FC<ButtonProps> = ({
                         >
                             <MdClose
                                 size={24}
-                                className="text-red-700 w-6 h-6 sm:w-9 sm:h-9"
+                                data-testid="error"
+                                className="text-white w-6 h-6 sm:w-9 sm:h-9"
                             />
                         </motion.div>
                     </motion.div>
@@ -139,6 +143,7 @@ const DynamicButton: React.FC<ButtonProps> = ({
                             exit="exit"
                             initial="initial"
                             animate="animate"
+                            data-testid="success"
                             variants={buttonVariants}
                         >
                             <MdCheck

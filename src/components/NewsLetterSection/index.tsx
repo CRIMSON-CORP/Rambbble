@@ -1,11 +1,11 @@
 'use client';
+import useButtonStatus from '@/hooks/useButtonStatus';
+import { storeNewsLetterEmail } from '@/service/firebase';
+import { inViewPropsSome } from '@/utils/framer-motion-variants';
+import { Variants, motion } from 'framer-motion';
 import Image from 'next/image';
 import React, { useCallback } from 'react';
-import { Variants, motion } from 'framer-motion';
-import { inViewPropsSome } from '@/utils/framer-motion-variants';
-import DynamicButton from '../ui/DynamicButton';
-import { storeNewsLetterEmail } from '@/service/firebase';
-import useButtonStatus from '@/hooks/useButtonStatus';
+import { DynamicButton } from '../ui';
 
 const sectionVariants: Variants = {
     hidden: {
