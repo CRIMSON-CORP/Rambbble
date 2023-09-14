@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui';
 import '@/app/globals.css';
+import { Button } from '@/components/ui';
 
 describe('Button.cy.tsx', () => {
     it('playground', () => {
@@ -63,11 +63,11 @@ describe('Button.cy.tsx', () => {
         cy.mount(<Button size="large">Large Button</Button>);
         cy.get('button')
             .should('contain', 'Large Button')
-            .and('have.class', 'text-2xl');
+            .and('have.class', 'text-lg');
 
         cy.mount(<Button size="normal">Normal Button</Button>);
         cy.get('button')
             .should('contain', 'Normal Button')
-            .and('have.class', 'text-base');
+            .and('have.class', 'text-xs');
     });
 });
