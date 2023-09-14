@@ -1,5 +1,4 @@
 import NavLinksList from '@/config/nav-links';
-import { skip } from 'node:test';
 
 describe('template spec', () => {
     it('goes to website', () => {
@@ -24,12 +23,59 @@ describe('render navbar', () => {
             .should('have.length', NavLinksList.length);
     });
 
-    it.only('nav links go to pages', () => {
+    it('nav links go to pages', () => {
         NavLinksList.map((link) => {
-            cy.get(`a[href='${link.path}']`).click();
+            cy.get(`header a[href='${link.path}']`).click();
             cy.location('pathname').should('equal', link.path);
         });
     });
+
+    it('nav indicator works properly', () => {
+        // wait for loader to go away
+        cy.wait(3000);
+        let pageIndex = 0;
+        // Indidcator on only the first link asper on home page
+        NavLinksList.map((link, index) => {
+            cy.get(`header a[href='${link.path}'] + span`).should(
+                `${index === pageIndex ? 'exist' : 'not.exist'}`,
+            );
+        });
+
+        // Go to second page and indicator should exist only on the second page
+        pageIndex = 1;
+        cy.get(`header a[href='${NavLinksList[pageIndex].path}']`).click();
+        NavLinksList.map((link, index) => {
+            cy.get(`header a[href='${link.path}'] + span`).should(
+                `${index === pageIndex ? 'exist' : 'not.exist'}`,
+            );
+        });
+        // Go to third page and indicator should exist only on the second page
+        pageIndex = 2;
+        cy.get(`header a[href='${NavLinksList[pageIndex].path}']`).click();
+        NavLinksList.map((link, index) => {
+            cy.get(`header a[href='${link.path}'] + span`).should(
+                `${index === pageIndex ? 'exist' : 'not.exist'}`,
+            );
+        });
+        // Go to forth page and indicator should exist only on the second page
+        pageIndex = 3;
+        cy.get(`header a[href='${NavLinksList[pageIndex].path}']`).click();
+        NavLinksList.map((link, index) => {
+            cy.get(`header a[href='${link.path}'] + span`).should(
+                `${index === pageIndex ? 'exist' : 'not.exist'}`,
+            );
+        });
+        // Go to fifth page and indicator should exist only on the second page
+        pageIndex = 4;
+        cy.get(`header a[href='${NavLinksList[pageIndex].path}']`).click();
+        NavLinksList.map((link, index) => {
+            cy.get(`header a[href='${link.path}'] + span`).should(
+                `${index === pageIndex ? 'exist' : 'not.exist'}`,
+            );
+        });
+    });
+});
+
 describe('homepage ui is proper', () => {
     beforeEach(() => {
         cy.visit('http://localhost:3000');
