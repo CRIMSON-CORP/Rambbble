@@ -1,14 +1,13 @@
 'use client';
-import React from 'react';
 import { RxHamburgerMenu } from 'react-icons/rx';
 
-import useToggle from '@/hooks/useToggle';
 import useModalContext from '@/hooks/useModalContext';
+import useToggle from '@/hooks/useToggle';
 
 import Logo from '../Logo';
 import { Button } from '../ui';
-import NavLinks from './NavLinks';
 import MobileNav from './MobileNav';
+import NavLinks from './NavLinks';
 
 function Header() {
     const { state, open, close } = useToggle();
@@ -30,7 +29,11 @@ function Header() {
                             </Button>
                         </div>
                     </div>
-                    <button className="inline-block lg:hidden" onClick={open}>
+                    <button
+                        onClick={open}
+                        data-testid="open-side-nav"
+                        className="inline-block lg:hidden"
+                    >
                         <RxHamburgerMenu
                             size={32}
                             className="text-primary-orange"

@@ -113,4 +113,43 @@ describe('homepage ui is proper', () => {
     });
 });
 
+describe('modal opens', () => {
+    beforeEach(() => {
+        cy.visit('http://localhost:3000');
+    });
+    it('opens modal', () => {
+        // test for open modal
+        cy.get('#hero button').first().click();
+        //wait for modal animation
+        cy.wait(1000);
+        cy.get('#modal').should('exist').should('be.visible');
+
+        // test for close modal
+        cy.getByTestId('close-modal-button').click();
+        cy.wait(1000);
+        cy.get('#modal').should('not.exist');
+    });
+});
+
+describe.only('test mobile nav', () => {
+    beforeEach(() => {
+        cy.viewport(360, 720);
+        cy.visit('http://localhost:3000');
+    });
+
+    it('opens mobile nav', () => {
+        // wait for page to load
+        cy.wait(5000);
+        cy.getByTestId('open-side-nav').should('exist').click();
+
+        cy.get('header #mobile_menu').should('exist').should('be.visible');
+
+        // test close mobile nav
+        cy.getByTestId('close-mobile-nav')
+            .should('exist')
+            .should('be.visible')
+            .click();
+
+        cy.get('header #mobile_menu').should('not.exist');
+    });
 });

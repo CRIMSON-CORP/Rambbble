@@ -1,5 +1,5 @@
 'use client';
-import { Variants, motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, Variants, motion } from 'framer-motion';
 import Link from 'next/link';
 
 import { TfiClose } from 'react-icons/tfi';
@@ -95,6 +95,7 @@ function MobileNav({ state, close }: MobileNavProps): JSX.Element {
                     >
                         <button
                             onClick={close}
+                            data-testid="close-mobile-nav"
                             className="absolute top-10 left-10 text-white"
                         >
                             <TfiClose fill="white" color="red" size={48} />

@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+/// <reference path="./component.d.ts" />
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -35,3 +36,9 @@
 //     }
 //   }
 // }
+
+// const getBySel: keyof Cypress.Chainable<string> = 'clearCookies';
+
+Cypress.Commands.add('getByTestId', (selector, ...args) => {
+    return cy.get(`[data-testid=${selector}]`, ...args);
+});

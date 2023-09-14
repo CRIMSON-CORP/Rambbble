@@ -1,7 +1,7 @@
-import { useCallback } from 'react';
-import type { FC, ReactNode } from 'react';
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
+import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
+import type { FC, ReactNode } from 'react';
+import { useCallback } from 'react';
 import { TfiClose } from 'react-icons/tfi';
 
 interface ModalProps {
@@ -53,6 +53,7 @@ const Modal: FC<ModalProps> = ({
                                 <motion.button
                                     layout
                                     onClick={closeModal}
+                                    data-testid="close-modal-button"
                                     className="absolute sm:top-10 sm:right-10 sm:w-10 sm:h-10 top-4 right-4 w-6 h-6 cursor-pointer z-10 center"
                                 >
                                     <TfiClose className="text-primary-orange" />
