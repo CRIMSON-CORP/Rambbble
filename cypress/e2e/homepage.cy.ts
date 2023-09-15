@@ -132,12 +132,17 @@ describe('modal opens', () => {
 });
 
 describe.only('test mobile nav', () => {
-    beforeEach(() => {
+    it('mobile menu bar doesnt show on desktop', () => {
+        cy.viewport(1440, 900);
+        cy.visit('http://localhost:3000');
+        cy.wait(5000);
+        cy.getByTestId('open-side-nav')
+            .should('exist')
+            .should('not.be.visible');
+    });
+    it('opens mobile nav', () => {
         cy.viewport(360, 720);
         cy.visit('http://localhost:3000');
-    });
-
-    it('opens mobile nav', () => {
         // wait for page to load
         cy.wait(5000);
         cy.getByTestId('open-side-nav').should('exist').click();
@@ -151,5 +156,23 @@ describe.only('test mobile nav', () => {
             .click();
 
         cy.get('header #mobile_menu').should('not.exist');
+    });
+});
+
+describe('test waitlist submit', () => {
+    beforeEach(() => {
+        cy.visit('http://localhost:3000');
+        cy.wait(4000); // wait for laoder to go
+        cy.get('#hero button').first().click();
+    });
+
+    it('sumbits waitlist email', () => {
+        const testName = 'John Doe';
+        const testEmail = 'johndoe@email';
+        cy.getByTestId('wait-list-name').should('exist').type(testName);
+        cy.getByTestId('wait-list-email').should('exist').type(testEmail);
+        cy.getByTestId('wait-list-form').should('exist').submit();
+
+        cy.getByTestId('you-are-in-page').should('exist').should('be.visible');
     });
 });

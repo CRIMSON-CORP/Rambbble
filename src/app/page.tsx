@@ -597,7 +597,11 @@ function JoinWaitListScreen({
             <p className="text-blue-950 text-opacity-70 text-sm sm:text-base font-light leading-relaxed italic">
                 ** We promise not to spam your email
             </p>
-            <form onSubmit={onSubmit} className="flex flex-col gap-4">
+            <form
+                onSubmit={onSubmit}
+                data-testid="wait-list-form"
+                className="flex flex-col gap-4"
+            >
                 <div className="rounded-[10px] border border-slate-500 border-opacity-25 flex items-center overflow-hidden pl-3.5">
                     <AiOutlineUser
                         size={24}
@@ -608,6 +612,7 @@ function JoinWaitListScreen({
                         placeholder="Enter your name"
                         type="text"
                         name="full-name"
+                        data-testid="wait-list-name"
                         className="px-2.5 py-3 sm:py-5 placeholder:text-neutral-500 text-base sm:text-lg sm:font-medium leading-tight text-black grow rounded-r-[10px] w-full"
                     />
                 </div>
@@ -620,6 +625,7 @@ function JoinWaitListScreen({
                         required
                         type="email"
                         name="email"
+                        data-testid="wait-list-email"
                         placeholder=" Enter your email address"
                         className="px-2.5 py-3 sm:py-5 placeholder:text-neutral-500 text-base sm:text-lg sm:font-medium leading-tight text-black grow rounded-r-[10px] w-full"
                     />
@@ -634,7 +640,10 @@ function JoinWaitListScreen({
 
 function YoureInScreen({ userFirstName }: { userFirstName: string }) {
     return (
-        <article className="relative flex flex-col gap-5 pb-16 md:pb-32">
+        <article
+            data-testid="you-are-in-page"
+            className="relative flex flex-col gap-5 pb-16 md:pb-32"
+        >
             <div className="flex flex-col">
                 <Image
                     alt="youre in"
