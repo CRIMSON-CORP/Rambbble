@@ -71,9 +71,10 @@ function HeroContent() {
                     </h1>
                     <SlideInContent delay={0.25}>
                         <div className="opacity-70 text-faint-dark-blue text-base sm:text-lg xl:text-2xl font-normal">
-                            Rambbble connects people with the same passion -
-                            traveling! Our goal is to help you find Travel
-                            Buddies and Make New Friends
+                            Rambbble connects people with the same passions and
+                            interests! Our goal is to help you find “Activity
+                            Buddies” and Make New Friends. Find an activity
+                            buddy
                         </div>
                     </SlideInContent>
                 </div>
@@ -216,10 +217,9 @@ function Community() {
                                 <SlideInContent>
                                     <div className="max-w-[535px] text-dark-blue text-base sm:text-lg md:text-xl lg:text-2xl font-light leading-normal">
                                         We are building a community to connect
-                                        travelers all around the world. We are
-                                        creating a trustworthy environment where
-                                        people can share moments and
-                                        experiences.
+                                        people all around the world - a
+                                        trustworthy environment where people can
+                                        share moments and experiences
                                     </div>
                                 </SlideInContent>
                             </div>
@@ -275,8 +275,7 @@ function HowItWorks() {
                             width={217}
                             height={195}
                             title="Find a trip"
-                            description="Make a trip by selecting a destination that you
-                                are traveling to or find existing trips."
+                            description="Create an activity or trip or find someone that has one that you are interested in"
                             imageAlt="mobile list artwork"
                             imagePath="/mobile-note-list-cuate.svg"
                         />
@@ -285,9 +284,7 @@ function HowItWorks() {
                             width={211}
                             height={204}
                             title="Get Connected"
-                            description="Swipe and get matched with someone that is
-                                heading to the same location and start chatting
-                                with them."
+                            description="Swipe and get matched with anyone that you share same interests or planned activities with and starting chatting with them."
                             imageAlt="mobile messages artwork"
                             imagePath="/messages-cuate.svg"
                             className="md:-translate-y-56"
@@ -297,7 +294,7 @@ function HowItWorks() {
                             width={249}
                             height={223}
                             title="Trip Together"
-                            description="Plan together, meet up with your travel companion at a pre-decided public place and travel together."
+                            description="Meet up with your new buddy if you can, work out your plans together and then zoom off!"
                             imageAlt="planning a trip artwork"
                             imagePath="/trip-amico.svg"
                         />
