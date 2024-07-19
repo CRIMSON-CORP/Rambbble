@@ -73,8 +73,7 @@ function HeroContent() {
                         <div className="opacity-70 text-faint-dark-blue text-base sm:text-lg xl:text-2xl font-normal">
                             Rambbble connects people with the same passions and
                             interests! Our goal is to help you find “Activity
-                            Buddies” and Make New Friends. Find an activity
-                            buddy
+                            Buddies” and Make New Friends.
                         </div>
                     </SlideInContent>
                 </div>
